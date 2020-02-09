@@ -1,0 +1,203 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fprintf, scanf, fclose, fopen              ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import fprintf msvcrt.dll
+    10                                  import fopen msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import scanf msvcrt.dll
+    13                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 <res 00000009>              n resb 9
+    19 00000009 00                          cnt db 0
+    20 0000000A 00                          cnt1 db 0
+    21 0000000B 6E3D00                      message db "n=", 0
+    22 0000000E 257300                      format db "%s", 0
+    23 00000011 0000                        rez_int dw 0
+    24 00000013 6E756D6172756C2065-         format1 db "numarul e %d.%d ", 0
+    24 0000001C 2025642E25642000   
+    25 00000024 726573756C742E7478-         nume_fisier db "result.txt", 0
+    25 0000002D 7400               
+    26 0000002F 7700                        mod_acces db "w", 0
+    27                                      
+    28 00000031 00000000                    rez1 dd 0
+    29 00000035 00000000                    rez2 dd 0
+    30 00000039 FF                          descriptor_fis db -1
+    31                                      
+    32                                  
+    33                                  ; our code starts here
+    34                                  segment code use32 class=code
+    35                                      start:
+    36                                          ; ...
+    37                                          
+    38 00000000 68[00000000]                    push dword n
+    39 00000005 68[0E000000]                    push dword format
+    40 0000000A FF15[00000000]                  call [scanf]
+    41 00000010 83C408                          add esp, 4*2
+    42 00000013 BE[00000000]                    mov esi, n
+    43                                          
+    44                                          for1:
+    45 00000018 B800000000                          mov eax, 0
+    46                                              
+    47 0000001D AC                                  lodsb
+    48 0000001E 3C2E                                cmp al, '.'
+    49 00000020 740B                                je endi
+    50                                              
+    51 00000022 2C30                                sub al, '0'
+    52 00000024 50                                  push eax
+    53 00000025 FE05[09000000]                      inc byte [cnt]
+    54                                              
+    55 0000002B EBEB                                jmp for1
+    56                                              
+    57                                          endi:
+    58                                          
+    59 0000002D B900000000                      mov ecx, 0
+    60 00000032 8A0D[09000000]                  mov cl, [cnt]
+    61                                          
+    62 00000038 66BA0100                        mov dx, 1
+    63 0000003C 66BB0000                        mov bx, 0
+    64                                          for2:
+    65 00000040 58                                  pop eax; eax = cifra care e pe ax
+    66 00000041 51                                  push ecx; eliberez registrul
+    67                                              
+    68 00000042 6689D1                              mov cx, dx
+    69 00000045 66F7E2                              mul dx; inmultesc cifra cu dx si rezultatul e pe dx:ax si o sa-l retin inainte pe cx, dar fiind max 4 cifre e pe ax doar
+    70                                              
+    71 00000048 6689CA                              mov dx, cx
+    72 0000004B 6601C3                              add bx, ax; o adaug la numarul format in bx
+    73                                              
+    74 0000004E 6689D0                              mov ax, dx; pun pe ax, dx 
+    75                                              
+    76 00000051 66B90A00                            mov cx, 10; o sa inmultesc cu 10
+    77 00000055 66F7E1                              mul cx; eax = cx * dx
+    78                                              
+    79 00000058 6689C2                              mov dx, ax; readaug in dx = ax (adica tin puterile lui 10)
+    80                                              
+    81 0000005B 59                                  pop ecx
+    82 0000005C E2E2                                loop for2
+    83                                              
+    84                                          ; rezultatul e in bx
+    85 0000005E 6683C303                        add bx, 3; partea intreaga din 3.1415
+    86 00000062 66891D[11000000]                mov [rez_int], bx
+    87                                          ; urmeaza sa fac pentru partea intreaga
+    88                                          
+    89 00000069 BE[00000000]                    mov esi, n
+    90 0000006E B800000000                      mov eax, 0
+    91 00000073 A0[09000000]                    mov al, [cnt]
+    92 00000078 01C6                            add esi, eax
+    93 0000007A 83C601                          add esi, 1
+    94                                          
+    95                                          for3:
+    96 0000007D B800000000                          mov eax, 0
+    97 00000082 AC                                  lodsb
+    98 00000083 3C00                                cmp al, 0
+    99 00000085 740B                                je endi1
+   100                                              
+   101 00000087 2C30                                sub al, '0'
+   102 00000089 50                                  push eax
+   103 0000008A FE05[0A000000]                      inc byte [cnt1]
+   104                                              
+   105 00000090 EBEB                                jmp for3
+   106                                          
+   107                                              
+   108                                          endi1:
+   109 00000092 66BA0100                        mov dx, 1
+   110                                          
+   111 00000096 BB00000000                      mov ebx, 0
+   112 0000009B B900000000                      mov ecx, 0
+   113 000000A0 B104                            mov cl, 4
+   114 000000A2 2A0D[0A000000]                  sub cl, [cnt1]
+   115 000000A8 E322                            jecxz nextu
+   116                                          
+   117                                          for5: 
+   118 000000AA B800000000                          mov eax, 0
+   119 000000AF 51                                  push ecx; eliberez registrul
+   120                                              
+   121 000000B0 6689D1                              mov cx, dx
+   122 000000B3 66F7E2                              mul dx; inmultesc cifra cu dx si rezultatul e pe dx:ax si o sa-l retin inainte pe cx, dar fiind max 4 cifre e pe ax doar
+   123                                              
+   124 000000B6 6689CA                              mov dx, cx
+   125 000000B9 6601C3                              add bx, ax; o adaug la numarul format in bx
+   126                                              
+   127 000000BC 6689D0                              mov ax, dx; pun pe ax, dx 
+   128                                              
+   129 000000BF 66B90A00                            mov cx, 10; o sa inmultesc cu 10
+   130 000000C3 66F7E1                              mul cx; eax = cx * dx
+   131                                              
+   132 000000C6 6689C2                              mov dx, ax; readaug in dx = ax (adica tin puterile lui 10)
+   133                                              
+   134 000000C9 59                                  pop ecx
+   135                                              
+   136 000000CA E2DE                                loop for5
+   137                                          
+   138                                          
+   139                                          nextu:
+   140                                          
+   141 000000CC B900000000                      mov ecx, 0
+   142 000000D1 8A0D[0A000000]                  mov cl, [cnt1]
+   143                                          
+   144                                          for4:
+   145 000000D7 58                                  pop eax; eax = cifra care e pe ax
+   146 000000D8 51                                  push ecx; eliberez registrul
+   147                                              
+   148 000000D9 6689D1                              mov cx, dx
+   149 000000DC 66F7E2                              mul dx; inmultesc cifra cu dx si rezultatul e pe dx:ax si o sa-l retin inainte pe cx, dar fiind max 4 cifre e pe ax doar
+   150                                              
+   151 000000DF 6689CA                              mov dx, cx
+   152 000000E2 6601C3                              add bx, ax; o adaug la numarul format in bx
+   153                                              
+   154 000000E5 6689D0                              mov ax, dx; pun pe ax, dx 
+   155                                              
+   156 000000E8 66B90A00                            mov cx, 10; o sa inmultesc cu 10
+   157 000000EC 66F7E1                              mul cx; eax = cx * dx
+   158                                              
+   159 000000EF 6689C2                              mov dx, ax; readaug in dx = ax (adica tin puterile lui 10)
+   160                                              
+   161 000000F2 59                                  pop ecx
+   162 000000F3 E2E2                                loop for4
+   163                                          
+   164 000000F5 B900000000                      mov ecx, 0
+   165 000000FA 81C387050000                    add ebx, 1415; ebx partea fractionara
+   166                                          
+   167 00000100 668B0D[11000000]                mov cx, [rez_int]
+   168                                          
+   169 00000107 81FB0F270000                    cmp ebx, 9999
+   170 0000010D 7E0A                            jle aici
+   171 0000010F 6683C101                        add cx, 1
+   172 00000113 81EB10270000                    sub ebx, 10000
+   173                                          
+   174                                          
+   175                                          aici:
+   176                                          
+   177 00000119 891D[31000000]                  mov dword [rez1], ebx
+   178 0000011F 890D[35000000]                  mov dword [rez2], ecx
+   179                                          
+   180 00000125 68[2F000000]                    push mod_acces
+   181 0000012A 68[24000000]                    push nume_fisier
+   182 0000012F FF15[00000000]                  call [fopen]
+   183 00000135 83C408                          add esp, 4 * 2
+   184 00000138 A3[39000000]                    mov [descriptor_fis], eax
+   185                                          
+   186 0000013D 8B1D[31000000]                  mov ebx, [rez1]
+   187 00000143 8B0D[35000000]                  mov ecx, [rez2]
+   188 00000149 53                              push ebx
+   189 0000014A 51                              push ecx
+   190 0000014B 68[13000000]                    push format1
+   191 00000150 FF35[39000000]                  push dword [descriptor_fis]        
+   192 00000156 FF15[00000000]                  call [fprintf]
+   193 0000015C 83C410                          add esp, 4 * 4
+   194                                          
+   195 0000015F FF35[39000000]                  push dword [descriptor_fis]
+   196 00000165 FF15[00000000]                  call [fclose]
+   197 0000016B 83C404                          add esp, 4 * 1
+   198                                          
+   199                                          ; exit(0)
+   200 0000016E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   201 00000170 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

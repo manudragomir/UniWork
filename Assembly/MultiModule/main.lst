@@ -1,0 +1,34 @@
+     1                                  bits 32
+     2                                  
+     3                                  ; informam asamblorul ca dorim ca functia _sumaNumere sa fie disponibila altor unitati de compilare
+     4                                  global _sumaNumere
+     5                                  
+     6                                  ; linkeditorul poate folosi segmentul public de date si pentru date din afara
+     7                                  segment data public data use32
+     8                                  
+     9                                  ; codul scris in asamblare este dispus intr-un segment public, posibil a fi partajat cu alt cod extern
+    10                                  segment code public code use32
+    11                                  
+    12                                  ; int sumaNumere(int, int)
+    13                                  ; conventie cdecl
+    14                                  _sumaNumere:
+    15                                      ; creare cadru de stiva pentru programul apelat
+    16 00000000 55                          push ebp
+    17 00000001 89E5                        mov ebp, esp
+    18                                      
+    19                                      ; obtinem argumentele transmise pe stiva functiei sumaNumere
+    20                                      ; la locatia [ebp+4] se afla adresa de return (valoarea din EIP la momentul apelului)
+    21                                      ; la locatia [ebp] se afla valoarea ebp pentru apelant
+    22 00000003 8B4508                      mov eax, [ebp + 8]        ; eax <- a
+    23                                      
+    24 00000006 8B5D0C                      mov ebx, [ebp + 12]        ; ebx <- b
+    25                                      
+    26 00000009 01D8                        add eax, ebx            ; calculam suma
+    27                                                              ; valoarea de rezulat a functiei este in eax
+    28                                  
+    29                                      ; refacem cadrul de stiva pentru programul apelant
+    30 0000000B 89EC                        mov esp, ebp
+    31 0000000D 5D                          pop ebp
+    32                                  
+    33 0000000E C3                          ret
+    34                                      ; conventie cdecl - este responsabilitatea programului apelant sa elibereze parametrii transmisi

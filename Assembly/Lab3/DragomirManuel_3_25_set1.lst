@@ -1,0 +1,91 @@
+     1                                  ; ; Dragomir Manuel-Alexandru, gr. 213, 18.10.2015, tema lab3, problema 25
+     2                                  ; (a + b + c) - (d + d) + (b + c)
+     3                                  ; a - byte, b - word, c - double word, d - qword - Interpretare fara semn
+     4                                  
+     5                                  bits 32 ; assembling for the 32 bits architecture
+     6                                  
+     7                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     8                                  global start        
+     9                                  
+    10                                  ; declare external functions needed by our program
+    11                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    12                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                      
+    19 00000000 19                          a db 25
+    20 00000001 0401                        b dw 260
+    21 00000003 04010000                    c dd 260
+    22 00000007 9600000000000000            d dq 150
+    23 0000000F 0000                        x dw 0
+    24 00000011 0000000000000000            y dq 0
+    25                                      
+    26                                  
+    27                                  ; our code starts here
+    28                                  segment code use32 class=code
+    29                                      start:
+    30                                          ; ...
+    31                                          
+    32 00000000 668B1D[01000000]                mov bx, [b]; bx = b
+    33 00000007 66B90000                        mov cx, 0 ; cx:bx = b facut double word
+    34                                          
+    35 0000000B 66A1[03000000]                  mov ax, [c]; 
+    36 00000011 668B15[05000000]                mov dx, [c+2]; dx:ax = c
+    37                                          
+    38 00000018 6601D8                          add ax, bx; 
+    39 0000001B 6611CA                          adc dx, cx;
+    40                                          
+    41 0000001E 6652                            push dx
+    42 00000020 6650                            push ax
+    43 00000022 8F05[0F000000]                  pop dword [x] ; x = b + c
+    44                                          
+    45 00000028 A1[07000000]                    mov eax, [d]
+    46 0000002D 8B15[0B000000]                  mov edx, [d+4]; edx:eax = d
+    47                                          
+    48 00000033 8B1D[07000000]                  mov ebx, [d]
+    49 00000039 8B0D[0B000000]                  mov ecx, [d+4]; ecx:ebx = d
+    50                                          
+    51 0000003F 01D8                            add eax, ebx 
+    52 00000041 11CA                            adc edx, ecx ; edx:eax = d+d
+    53                                          
+    54 00000043 A3[11000000]                    mov dword[y], eax
+    55 00000048 8915[15000000]                  mov dword[y+4], edx ; y = d+d
+    56                                          
+    57 0000004E A0[00000000]                    mov al, [a]; al = a
+    58 00000053 B400                            mov ah, 0; ax = a
+    59                                          
+    60 00000055 668B1D[01000000]                mov bx, [b]; bx = b
+    61 0000005C 6601D8                          add ax, bx; ax = a + b
+    62                                          
+    63 0000005F 66BA0000                        mov dx, 0; dx:ax = a + b
+    64                                          
+    65 00000063 668B1D[03000000]                mov bx, [c]
+    66 0000006A 668B0D[05000000]                mov cx, [c+2] ; cx:bx = c
+    67                                          
+    68 00000071 6601D8                          add ax, bx;
+    69 00000074 6611CA                          adc dx, cx; dx:ax = a+b+c
+    70                                          
+    71 00000077 6652                            push dx
+    72 00000079 6650                            push ax
+    73                                          
+    74 0000007B 58                              pop eax ; eax = a+b+c
+    75                                          
+    76 0000007C BA00000000                      mov edx, 0; edx:eax=a+b+c
+    77 00000081 8B1D[11000000]                  mov ebx, [y]
+    78 00000087 8B0D[15000000]                  mov ecx, [y+4]; ecx:ebx=d+d
+    79                                          
+    80 0000008D 29D8                            sub eax, ebx;
+    81 0000008F 19CA                            sbb edx, ecx; edx:eax = (a+b+c) - (d+d)
+    82                                          
+    83 00000091 8B1D[0F000000]                  mov ebx, [x]
+    84 00000097 B900000000                      mov ecx, 0; ebx:ecx = x = b+c
+    85                                          
+    86 0000009C 01D8                            add eax, ebx; 
+    87 0000009E 11CA                            adc edx, ecx; edx:eax = (a+b+c) - (d+d) + (b+c)
+    88                                          
+    89                                          ; exit(0)
+    90 000000A0 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    91 000000A2 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

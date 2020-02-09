@@ -1,0 +1,40 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start, prefix
+     4                                  
+     5                                  extern exit, printf, prefix
+     6                                       
+     7                                  import exit msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  
+    11                                  segment data use32 class=data
+    12 00000000 257300                      mod_string      db      '%s', 0
+    13 00000003 796179617961626F73-         s1          db      'yayayaboss', 0
+    13 0000000C 7300               
+    14                                      len1        equ     $ - s1 - 1
+    15 0000000E 79617961626F737300          s2          db      'yayaboss', 0
+    16                                      len2        equ     $ - s2 - 1
+    17 00000017 7961626F737300              s3          db      'yaboss', 0
+    18                                      len3        equ     $ - s3 - 1
+    19 0000001E <res 00000064>              rezultat    resb    100
+    20                                  
+    21                                  segment code use32 class=code       
+    22                                      start:
+    23 00000000 6A08                            push dword len2
+    24 00000002 68[17000000]                    push s3
+    25 00000007 6A0A                            push dword len1
+    26 00000009 68[03000000]                    push s1
+    27 0000000E E8(00000000)                    call prefix
+    28                                          
+    29 00000013 68[1E000000]                    push rezultat
+    30 00000018 68[00000000]                    push mod_string
+    31 0000001D FF15[00000000]                  call [printf]
+    32 00000023 83C408                          add esp, 4 * 2
+    33                                          
+    34                                          
+    35                                          
+    36                                          
+    37                                          
+    38 00000026 6A00                            push    dword 0    
+    39 00000028 FF15[00000000]                  call    [exit]     

@@ -1,0 +1,112 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit
+     6                                  extern scanf
+     7                                  extern printf
+     8                                  extern scanf
+     9                                  extern fscanf
+    10                                  extern fopen
+    11                                  
+    12                                  
+    13                                  import exit msvcrt.dll
+    14                                  import scanf msvcrt.dll
+    15                                  import fscanf msvcrt.dll
+    16                                  import printf msvcrt.dll
+    17                                  import fopen msvcrt.dll
+    18                                  
+    19                                  segment data use32 class=data
+    20                                      ; ...
+    21 00000000 257800                      format_hex db '%x', 0
+    22 00000003 256400                      format_int db '%d', 0
+    23 00000006 256300                      format_car db '%c', 0
+    24                                      
+    25 00000009 <res 00000004>              descriptor_file resd 1
+    26 0000000D <res 00000004>              nr resd 1
+    27 00000011 4E7520657374652076-         mesaj db 'Nu este valid', 0
+    27 0000001A 616C696400         
+    28 0000001F 0A000000                    caracter_enter dd 10
+    29 00000023 7200                        mod_acces db 'r', 0
+    30 00000025 257300                      format_str db '%s', 0
+    31 00000028 <res 00000011>              string resb 17
+    32 00000039 6669736965722E7478-         nume_fisier db 'fisier.txt', 0
+    32 00000042 7400               
+    33                                  
+    34                                  segment code use32 class=code
+    35                                      start:
+    36                                      
+    37                                      
+    38                                      read_citire:
+    39 00000000 68[0D000000]                    push nr
+    40 00000005 68[00000000]                    push format_hex
+    41 0000000A FF15[00000000]                  call [scanf]
+    42 00000010 83C408                          add esp, 4 * 2
+    43                                          
+    44 00000013 A1[0D000000]                    mov eax, [nr]
+    45                                          
+    46 00000018 3DFFFF0000                      cmp eax, 0FFFFh; eax - FFFFh
+    47 0000001D 7702                            ja re
+    48                                          
+    49 0000001F EB1D                            jmp gata
+    50                                          
+    51                                          re:
+    52 00000021 68[11000000]                    push mesaj
+    53 00000026 FF15[00000000]                  call [printf]
+    54                                        
+    55 0000002C 68[1F000000]                    push caracter_enter
+    56 00000031 68[25000000]                    push format_str
+    57 00000036 FF15[00000000]                  call [printf]
+    58                                          
+    59 0000003C EBC2                            jmp read_citire; daca e negativ continui citirea
+    60                                      
+    61                                      gata:
+    62                                      
+    63                                      ; citim nr de la tastatura
+    64                                      
+    65 0000003E 68[23000000]                push dword mod_acces
+    66 00000043 68[39000000]                push dword nume_fisier
+    67 00000048 FF15[00000000]              call [fopen]
+    68 0000004E 83C408                      add esp, 4 * 2
+    69                                      
+    70 00000051 A3[09000000]                mov [descriptor_file], eax
+    71 00000056 83F800                      cmp eax, 0
+    72 00000059 7449                        je final
+    73                                      
+    74 0000005B 68[28000000]                push dword string
+    75 00000060 68[25000000]                push dword format_str
+    76 00000065 FF35[09000000]              push dword [descriptor_file]
+    77 0000006B FF15[00000000]              call [fscanf]
+    78 00000071 83C40C                      add esp, 4 * 3
+    79                                      
+    80 00000074 BB[28000000]                mov ebx, string
+    81                                      
+    82 00000079 8B15[0D000000]              mov edx, [nr]; in edx am nr
+    83 0000007F B910000000                  mov ecx, 16
+    84                                      fah:
+    85 00000084 D1EA                            shr edx, 1
+    86 00000086 7202                            jc afisare
+    87 00000088 7318                            jnc endi
+    88                                          
+    89                                          afisare:
+    90 0000008A 51                              push ecx
+    91 0000008B 52                              push edx
+    92 0000008C 88C8                            mov al, cl
+    93 0000008E FEC8                            dec al
+    94 00000090 D7                              xlat
+    95                                          
+    96 00000091 50                              push eax
+    97 00000092 68[06000000]                    push format_car
+    98 00000097 FF15[00000000]                  call [printf]
+    99                                          
+   100 0000009D 83C408                          add esp, 4 * 2
+   101 000000A0 5A                              pop edx
+   102 000000A1 59                              pop ecx
+   103                                          
+   104                                          endi:
+   105 000000A2 E2E0                            loop fah
+   106                                      
+   107                                          
+   108                                          final:
+   109 000000A4 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   110 000000A6 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

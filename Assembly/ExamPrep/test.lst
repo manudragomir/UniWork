@@ -1,0 +1,126 @@
+     1                                  ; Sa se citeasca un fisier de la tastatura. sa se creeze un fisier
+     2                                  ; cu acel nume pe disc. Sa se scrie in fisierul creat in ordine inversa,
+     3                                  ; caracterele
+     4                                  ; din numele fisierului, mai intai majuscule apoi minuscule
+     5                                  
+     6                                  ;EX: FIsiER
+     7                                  ;PRINT; REIFis
+     8                                  bits 32
+     9                                  
+    10                                  global start        
+    11                                  
+    12                                  extern exit, fprintf, fopen, fclose, scanf     
+    13                                  
+    14                                  import exit msvcrt.dll   
+    15                                  import fprintf msvcrt.dll   
+    16                                  import fopen msvcrt.dll   
+    17                                  import fclose msvcrt.dll   
+    18                                  import scanf msvcrt.dll   
+    19                                  
+    20                                  segment data use32 class=data
+    21 00000000 <res 00000014>                  nume_fisier      resb       20
+    22 00000014 7700                            mod_afisare      db         'w', 0
+    23 00000016 256300                          mod_caracter     db         '%c', 0
+    24 00000019 257300                          mod_string       db         '%s', 0
+    25 0000001C <res 00000004>                  descriptor      resd        1
+    26 00000020 00                              contor           db         0
+    27                                      
+    28                                      
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          
+    32 00000000 68[00000000]                    push nume_fisier
+    33 00000005 68[19000000]                    push mod_string
+    34 0000000A FF15[00000000]                  call [scanf]
+    35 00000010 83C408                          add esp, 4 * 2
+    36                                          
+    37 00000013 68[14000000]                    push mod_afisare
+    38 00000018 68[00000000]                    push nume_fisier
+    39 0000001D FF15[00000000]                  call [fopen]
+    40 00000023 83C408                          add esp, 4 * 2
+    41                                          
+    42 00000026 83F800                          cmp eax, 0
+    43 00000029 0F8488000000                    je final
+    44                                          
+    45 0000002F A3[1C000000]                    mov [descriptor], eax
+    46                                          
+    47 00000034 BB[00000000]                    mov ebx, nume_fisier
+    48                                          
+    49                                          for1:
+    50 00000039 803B2E                              cmp byte [ebx], '.'
+    51 0000003C 7409                                je gata
+    52 0000003E 43                                  inc ebx
+    53 0000003F FE05[20000000]                      inc byte [contor]
+    54 00000045 EBF2                                jmp for1
+    55                                                      
+    56                                          gata:
+    57                                          
+    58 00000047 4B                              dec ebx
+    59                                          
+    60 00000048 8B0D[20000000]                  mov ecx, [contor]
+    61                                       
+    62                                          for2:
+    63 0000004E 51                                  push ecx
+    64 0000004F 803B41                              cmp byte [ebx], 'A'
+    65 00000052 7221                                jb next_el
+    66                                              
+    67 00000054 803B5A                              cmp byte [ebx], 'Z'
+    68 00000057 771C                                ja next_el
+    69                                              
+    70 00000059 B800000000                          mov eax, 0
+    71 0000005E 8A03                                mov al, [ebx]
+    72                                              
+    73 00000060 50                                  push eax
+    74 00000061 68[16000000]                        push mod_caracter
+    75 00000066 FF35[1C000000]                      push dword [descriptor]
+    76 0000006C FF15[00000000]                      call [fprintf]
+    77 00000072 83C40C                              add esp, 4 * 3
+    78                                              
+    79                                              next_el:
+    80 00000075 4B                                  dec ebx
+    81 00000076 59                                  pop ecx
+    82 00000077 E2D5                                loop for2
+    83                                              
+    84 00000079 BB[00000000]                    mov ebx, nume_fisier
+    85                                          
+    86                                          lup:
+    87 0000007E 803B2E                              cmp byte [ebx], '.'
+    88 00000081 7403                                je ready
+    89 00000083 43                                  inc ebx
+    90 00000084 EBF8                                jmp lup
+    91                                                      
+    92                                          ready:
+    93                                          
+    94 00000086 8B0D[20000000]                  mov ecx, [contor]
+    95                                       
+    96                                          lup2:
+    97 0000008C 51                                  push ecx
+    98 0000008D 803B61                              cmp byte [ebx], 'a'
+    99 00000090 7221                                jb next_elem
+   100                                              
+   101 00000092 803B7A                              cmp byte [ebx], 'z'
+   102 00000095 771C                                ja next_elem
+   103                                              
+   104 00000097 B800000000                          mov eax, 0
+   105 0000009C 8A03                                mov al, [ebx]
+   106                                              
+   107 0000009E 50                                  push eax
+   108 0000009F 68[16000000]                        push mod_caracter
+   109 000000A4 FF35[1C000000]                      push dword [descriptor]
+   110 000000AA FF15[00000000]                      call [fprintf]
+   111 000000B0 83C40C                              add esp, 4 * 3
+   112                                              
+   113                                              next_elem:
+   114 000000B3 4B                                  dec ebx
+   115 000000B4 59                                  pop ecx
+   116 000000B5 E2D5                                loop lup2
+   117                                              
+   118                                          final:
+   119                                          
+   120 000000B7 FF35[1C000000]                  push dword [descriptor]
+   121 000000BD FF15[00000000]                  call [fclose]
+   122 000000C3 83C404                          add esp, 4 * 1
+   123                                          
+   124                                          
+   125 000000C6 6A00                            push    dword 0    
+   126 000000C8 FF15[00000000]                  call    [exit]     

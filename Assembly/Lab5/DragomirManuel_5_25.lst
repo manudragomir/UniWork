@@ -1,0 +1,54 @@
+     1                                  ; Dragomir Manuel-Alexandru, gr. 213, 01.11.2018, tema lab5, problema 25
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 2B34326138345835            s1 db '+', '4', '2', 'a', '8', '4', 'X', '5'
+    17                                      len1 equ $-s1
+    18 00000008 613435                      s2 db 'a', '4', '5'
+    19                                      len2 equ $-s2
+    20 0000000B <res 0000000B>              d resb (len1+len2)
+    21                                  
+    22                                  ; our code starts here
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                          ; ...
+    26                                     
+    27 00000000 B908000000                  mov ecx, len1
+    28 00000005 B800000000                  mov eax, 0 ; indicele pentru primul sir
+    29 0000000A BE00000000                  mov esi, 0 ; indicele pentru sirul pe care vreau sa-l obtin
+    30                                      
+    31                                     
+    32                                      for1: 
+    33 0000000F 51                              push ecx
+    34 00000010 BB00000000                      mov ebx, 0
+    35 00000015 B903000000                      mov ecx, len2
+    36                                          for2:
+    37 0000001A 8A90[00000000]                      mov dl, [s1+eax] ; eax e pentru primul sir
+    38 00000020 3A93[08000000]                      cmp dl, [s2+ebx] ; ebx e pentru al doilea sir
+    39 00000026 740A                                je et
+    40 00000028 43                                  inc ebx
+    41 00000029 E2EF                            loop for2
+    42                                          
+    43 0000002B 8896[0B000000]                  mov [d+esi], dl
+    44 00000031 46                              inc esi ; esi e pt sirul nou
+    45                                          
+    46                                          et:
+    47 00000032 59                              pop ecx
+    48 00000033 40                              inc eax
+    49                                          
+    50 00000034 E2D9                        loop for1
+    51                                      
+    52                                          ; exit(0)
+    53 00000036 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    54 00000038 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

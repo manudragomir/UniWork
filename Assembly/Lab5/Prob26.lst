@@ -1,0 +1,62 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      
+    15 00000000 0104020308040905            S db 1, 4, 2, 3, 8, 4, 9, 5
+    16                                      len1 equ $ - S
+    17 00000008 34                          min db 1234h
+    17          ******************       warning: byte data exceeds bounds [-w+number-overflow]
+    18 00000009 00                          max db 0
+    19                                  
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ; ...
+    24                                      
+    25 00000000 B908000000                  mov ecx, len1
+    26 00000005 BE00000000                  mov esi, 0
+    27                                      
+    28                                      For_1:
+    29 0000000A 89F2                            mov edx, esi
+    30 0000000C 83E201                          and edx, 1
+    31                                          
+    32 0000000F 7402                            je E_par
+    33 00000011 7517                            jne E_impar
+    34                                          
+    35                                          E_par:
+    36 00000013 8A86[00000000]                     mov al, [S + esi]
+    37 00000019 3805[09000000]                     cmp [max], al
+    38 0000001F 7C02                               jl e_mai_mare
+    39 00000021 EB1E                               jmp The_End
+    40                                             
+    41                                             e_mai_mare:
+    42 00000023 A2[09000000]                            mov [max], al
+    43 00000028 EB17                                    jmp The_End
+    44                                                  
+    45                                          E_impar:
+    46 0000002A 8A86[00000000]                      mov al, [S + esi]
+    47 00000030 3A05[08000000]                      cmp al, [min]
+    48 00000036 7202                                jb e_mai_mic
+    49 00000038 EB07                                jmp The_End
+    50                                              
+    51                                              e_mai_mic:
+    52 0000003A A2[08000000]                            mov [min], al
+    53 0000003F EB00                                    jmp The_End
+    54                                               
+    55                                          The_End:
+    56 00000041 46                              inc esi
+    57                                      
+    58 00000042 E2C6                        loop For_1
+    59                                          ; exit(0)
+    60 00000044 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    61 00000046 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,38 @@
+     1                                  ; Dragomir Manuel-Alexandru, gr. 213, 15.10.2015, tema lab2, problema 16
+     2                                  ; setul 2 cu inmultiri + impartiri si a,b,c,d byte, e,f,g,h - word
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 3A                          a db 58
+    17 00000001 1D01                        e dw 285
+    18 00000003 E100                        f dw 225
+    19                                  
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ; ...
+    24                                          
+    25 00000000 A0[00000000]                   mov al, [a]; al = a
+    26 00000005 8A1D[00000000]                 mov bl, [a]; bl = a
+    27                                         
+    28 0000000B F6E3                           mul bl; ax = a * a
+    29                                         
+    30 0000000D 668B1D[01000000]               mov bx, [e]; bx = e
+    31 00000014 66031D[03000000]               add bx, [f]; bx = e + f
+    32                                         
+    33 0000001B 6629D8                         sub ax, bx ; ax = ax - bx = a * a - (e + f)
+    34                                       
+    35                                         
+    36                                          ; exit(0)
+    37 0000001E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    38 00000020 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

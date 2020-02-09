@@ -1,0 +1,7 @@
+3
+Popescu,Ana,21,165,albastru
+Ionescu,Vlad,23,175,verde
+Popescu,Ana,21,165,albastru
+Ionescu,Vlad,23,175,verde
+Popescu,Ana,21,165,albastru
+Ionescu,Vlad,23,175,verde

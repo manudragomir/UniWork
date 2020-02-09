@@ -1,0 +1,57 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 2B3432614033242A            S db '+', '4', '2', 'a', '@', '3', '$', '*'
+    15                                      len1 equ $ - S
+    16                                      
+    17 00000008 21402324255E262A            P db '!', '@', '#', '$', '%', '^', '&', '*'
+    18                                      len2 equ $ - P
+    19                                      
+    20 00000010 <res 00000008>              D resb len1
+    21                                      
+    22                                  ; our code starts here
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                          ; ...
+    26                                      
+    27 00000000 B908000000                  mov ecx, len1
+    28 00000005 BF00000000                  mov edi, 0 ; indice sir nou
+    29 0000000A BE00000000                  mov esi, 0 ; indice de parcurgere a sirului S
+    30                                      
+    31                                      For_1:
+    32 0000000F 8A86[00000000]                  mov al, [S + esi]
+    33 00000015 51                              push ecx
+    34 00000016 B908000000                      mov ecx, len2
+    35 0000001B BA00000000                      mov edx, 0
+    36                                          
+    37                                          For_2:
+    38 00000020 8A9A[08000000]                      mov bl, [P + edx]
+    39 00000026 38D8                                cmp al, bl
+    40                                              
+    41 00000028 7507                                jne nu_se_regaseste
+    42 0000002A 889F[10000000]                          mov [D + edi], bl
+    43 00000030 47                                      inc edi
+    44                                                  
+    45                                              nu_se_regaseste:
+    46 00000031 42                                      inc edx
+    47                                              
+    48 00000032 E2EC                            loop For_2
+    49                                          
+    50 00000034 59                          pop ecx  
+    51 00000035 46                          inc esi
+    52 00000036 E2D7                        loop For_1
+    53                                          
+    54                                          
+    55                                          ; exit(0)
+    56 00000038 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    57 0000003A FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,78 @@
+     1                                  ; Dragomir Manuel-Alexandru, gr. 213, 15.10.2015, tema lab2, problema 16
+     2                                  ; setul 3cu adunari + scaderi si a,b,c,d word
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 0C                          a db 12
+    17 00000001 10                          b db 16
+    18 00000002 06                          c db 6
+    19 00000003 3700                        d dw 55
+    20 00000005 00                          x db 0
+    21 00000006 00                          aux db 0
+    22                                  
+    23                                  ; our code starts here
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ; ...
+    27                                          
+    28 00000000 B400                            mov ah, 0 ; ah =0
+    29 00000002 A0[00000000]                    mov al, [a] ; al = a
+    30 00000007 0205[01000000]                  add al, [b] ; al = a + b
+    31 0000000D B302                            mov bl, 2 ; bl = 2
+    32                                          
+    33 0000000F F6F3                            div bl ; al = (a+b)/2
+    34                                          
+    35 00000011 A2[05000000]                    mov [x], al ; x = (a+b)/2
+    36                                          
+    37 00000016 B30A                            mov bl, 10 ; bl = 10
+    38                                          
+    39 00000018 B400                            mov ah, 0 ; ah = 0
+    40 0000001A A0[00000000]                    mov al, [a] ; al = a
+    41 0000001F 8A0D[02000000]                  mov cl, [c] ; cl = c
+    42                                          
+    43 00000025 F6F1                            div cl ; al = a/c
+    44                                          
+    45 00000027 A2[06000000]                    mov [aux], al; aux = a/c
+    46 0000002C B00A                            mov al, 10
+    47                                          
+    48 0000002E 2A05[06000000]                  sub al, [aux]; al = 10 - aux = 10 - a/c
+    49                                          
+    50 00000034 88C3                            mov bl, al; bl = al = 10 - a/c
+    51 00000036 A0[05000000]                    mov al, [x]; al = x = (a+b)/2
+    52                                          
+    53 0000003B 00D8                            add al, bl; al = al + bl = x + aux = (a+b)/2 + (10 - a/c)
+    54                                          
+    55 0000003D A2[05000000]                    mov [x], al; x = (a+b)/2 + (10 - a/c)
+    56                                          
+    57 00000042 B400                            mov ah, 0; ah = 0
+    58 00000044 A0[01000000]                    mov al, [b]; al = b
+    59 00000049 B304                            mov bl, 4; bl = 4
+    60                                          
+    61 0000004B F6F3                            div bl ; al = b/4
+    62                                          
+    63 0000004D A2[06000000]                    mov [aux], al; aux = b/4
+    64                                          
+    65 00000052 A0[05000000]                    mov al, [x]; al = (a+b)/2 + (10 - a/c)
+    66                                          
+    67 00000057 0205[06000000]                  add al, [aux]; al = (a+b)/2 + (10 - a/c) + b/4
+    68                                          
+    69                                          
+    70                                          
+    71                                          
+    72                                          
+    73                                          
+    74                                          
+    75                                      
+    76                                          ; exit(0)
+    77 0000005D 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    78 0000005F FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,65 @@
+     1                                  ;Sa se citeasca de la tastatura un octet si un cuvant. Sa se afiseze pe ecran daca bitii octetului citit se regasesc consecutiv printre bitii cuvantului. Exemplu:
+     2                                  ;a = 10 = 0000 1010b
+     3                                  ;b = 256 = 0000 0001 0000 0000b
+     4                                  ;Pe ecran se va afisa NU.
+     5                                  ;a = 0Ah = 0000 1010b
+     6                                  ;b = 6151h = 0110 0001 0101 0001b
+     7                                  ;Pe ecran se va afisa DA (bitii se regasesc pe pozitiile 5-12).
+     8                                  bits 32
+     9                                  
+    10                                  global start        
+    11                                  
+    12                                  extern exit, scanf, printf
+    13                                        
+    14                                  import exit msvcrt.dll
+    15                                  import scanf msvcrt.dll
+    16                                  import printf msvcrt.dll
+    17                                  
+    18                                  segment data use32 class=data
+    19 00000000 <res 00000004>              a   resd    1
+    20 00000004 <res 00000004>              b   resd    1
+    21 00000008 256400                      format_citire      db      '%d', 0
+    22 0000000B 444100                      mesaj_af           db      'DA', 0
+    23 0000000E 4E5500                      mesaj_neg          db      'NU', 0
+    24                                      
+    25                                  segment code use32 class=code
+    26                                      start:
+    27 00000000 68[00000000]                    push a
+    28 00000005 68[08000000]                    push format_citire
+    29 0000000A FF15[00000000]                  call [scanf]
+    30 00000010 83C408                          add esp, 4 * 2
+    31                                          
+    32 00000013 68[04000000]                    push b
+    33 00000018 68[08000000]                    push format_citire
+    34 0000001D FF15[00000000]                  call [scanf]
+    35 00000023 83C408                          add esp, 4 * 2
+    36                                          
+    37 00000026 8A1D[00000000]                  mov bl, byte [a]
+    38 0000002C 66A1[04000000]                  mov ax, word [b]
+    39                                          
+    40 00000032 B907000000                      mov ecx, 7
+    41                                          
+    42                                          for1:
+    43 00000037 38D8                                cmp al, bl
+    44 00000039 7406                                jz exista
+    45 0000003B D1E8                                shr eax, 1
+    46 0000003D E2F8                                loop for1
+    47                                          
+    48 0000003F EB10                            jmp nu_exista
+    49                                          
+    50                                          exista:
+    51 00000041 68[0B000000]                        push mesaj_af
+    52 00000046 FF15[00000000]                      call [printf]
+    53 0000004C 83C404                              add esp, 4 * 1
+    54 0000004F EB0E                                jmp final
+    55                                          
+    56                                          nu_exista:
+    57 00000051 68[0E000000]                        push mesaj_neg
+    58 00000056 FF15[00000000]                      call [printf]
+    59 0000005C 83C404                              add esp, 4 * 1
+    60                                              
+    61                                          final
+    61          ******************       warning: label alone on a line without a colon might be in error [-w+orphan-labels]
+    62                                          
+    63 0000005F 6A00                            push    dword 0
+    64 00000061 FF15[00000000]                  call    [exit]

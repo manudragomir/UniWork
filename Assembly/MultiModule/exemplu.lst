@@ -1,0 +1,52 @@
+     1                                  ; programul calculeaza factorialul unui numar si afiseaza in consola rezultatul
+     2                                  ; procedura factorial este definita in segmentul de cod si primeste pe stiva ca si parametru un numar
+     3                                  bits 32
+     4                                  global start
+     5                                  
+     6                                  extern printf, exit
+     7                                  import printf msvcrt.dll
+     8                                  import exit msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 666163746F7269616C-     	format_string db "factorial=%d", 10, 13, 0
+    11 00000009 3D25640A0D00       
+    12                                      
+    13                                  segment code use32 class=code
+    14                                  ; urmeaza definirea procedurii
+    15                                  factorial: 
+    16 00000000 B801000000                  mov eax, 1
+    17 00000005 8B4C2404                    mov ecx, [esp + 4] 
+    18                                      ; mov ecx, [esp + 4] scoate de pe stiva parametrul procedurii
+    19                                      ; ATENTIE!!! in capul stivei este adresa de retur
+    20                                      ; parametrul procedurii este imediat dupa adresa de retur
+    21                                      ; a se vedea desenul de mai jos
+    22                                      ;
+    23                                      ; stiva
+    24                                      ;
+    25                                      ;|--------------|
+    26                                      ;| adresa retur |  <- [esp]
+    27                                      ;|--------------|
+    28                                      ;|  00000006h   |  <- parametrul pasat procedurii, [esp+4]
+    29                                      ;|--------------|
+    30                                      ; ....
+    31                                                  
+    32                                  	
+    33                                      .repet: 
+    34 00000009 F7E1                            mul ecx
+    35 0000000B E2FC                        loop .repet ; atentie, cazul ecx = 0 nu e tratat!
+    36                                  
+    37 0000000D C3                          ret
+    38                                         
+    39                                  ; programul "principal"       
+    40                                  start:
+    41 0000000E 6A06                    	push dword 6        ; se salveaza pe stiva numarul (parametrul procedurii)
+    42 00000010 E8EBFFFFFF              	call factorial      ; apel procedura
+    43                                  
+    44                                         ; afisare rezultat
+    45 00000015 50                      	push eax
+    46 00000016 68[00000000]            	push format_string
+    47 0000001B FF15[00000000]          	call [printf]
+    48 00000021 83C408                  	add esp, 4*2
+    49                                  
+    50 00000024 6A00                    	push 0
+    51 00000026 FF15[00000000]          	call [exit]

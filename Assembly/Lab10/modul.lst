@@ -1,0 +1,38 @@
+     1                                  bits 32
+     2                                  
+     3                                  global maxim
+     4                                  extern n
+     5                                  
+     6                                  segment data use32 public data
+     7 00000000 <res 00000004>              max resd 1
+     8                                  
+     9                                  segment code use32 public code
+    10                                  
+    11                                  maxim:
+    12 00000000 B900000000                  mov ecx, 0
+    13 00000005 8A0D[00000000]              mov cl, [n]; punem in cl nr de elemente
+    14                                      
+    15 0000000B 83C404                      add esp, 4
+    16 0000000E 58                          pop eax
+    17                                      
+    18 0000000F 89C6                        mov esi, eax; punem adresa lui v pe esi
+    19 00000011 AD                          lodsd; luam primul element
+    20 00000012 A3[00000000]                mov [max], eax; il fixam ca maxim
+    21 00000017 AD                          lodsd; luam al doilea element
+    22                                      
+    23 00000018 83E901                      sub ecx, 1; semnalam ca deja am luat un element
+    24                                      repeta:
+    25 0000001B 3B05[00000000]                  cmp eax, [max]; comparam cu maxim
+    26                                          
+    27 00000021 7E05                            jle nu_e_mai_mare; daca e mai mic sarim
+    28 00000023 A3[00000000]                    mov [max], eax
+    29                                          
+    30                                          nu_e_mai_mare:
+    31 00000028 AD                              lodsd
+    32 00000029 E2F0                            loop repeta
+    33                                      
+    34 0000002B 83EC08                      sub esp, 8
+    35 0000002E 59                          pop ecx; scoatem pe ecx adresa de intoarcere
+    36 0000002F FF35[00000000]              push dword [max]; punem in eax, maximul
+    37 00000035 51                          push ecx; punem din nou adresa
+    38 00000036 C3                          ret

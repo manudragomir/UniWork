@@ -1,0 +1,112 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, fread, fclose, fopen, printf
+     6                                                
+     7                                  import exit msvcrt.dll   
+     8                                  import fread msvcrt.dll   
+     9                                  import fopen msvcrt.dll   
+    10                                  import fclose msvcrt.dll   
+    11                                  import printf msvcrt.dll   
+    12                                  
+    13                                  segment data use32 class=data
+    14 00000000 <res 00000004>                  descriptor_fisier   resd    1
+    15 00000004 <res 0000000A>                  bloc                resb    10
+    16 0000000E 6669736965722E7478-             nume_fisier         db      'fisier.txt', 0
+    16 00000017 7400               
+    17 00000019 7200                            mod_acces           db      'r', 0
+    18 0000001B 436966726120256420-             mod_afisare         db      'Cifra %d apare de %d ori', 0
+    18 00000024 617061726520646520-
+    18 0000002D 2564206F726900     
+    19 00000034 00000000                        maxi                dd      0
+    20 00000038 00000000                        cifra_max           dd      0
+    21 0000003C <res 00000028>                  vector_de_frecvente resd    10
+    22                                          
+    23                                  
+    24                                  segment code use32 class=code
+    25                                      start:
+    26 00000000 68[19000000]                    push mod_acces
+    27 00000005 68[0E000000]                    push nume_fisier
+    28 0000000A FF15[00000000]                  call [fopen]
+    29 00000010 83C408                          add esp, 4 * 2
+    30                                          
+    31 00000013 83F800                          cmp eax, 0
+    32 00000016 0F84A9000000                    je final
+    33 0000001C A3[00000000]                    mov [descriptor_fisier], eax
+    34                                          
+    35                                          while1:
+    36 00000021 FF35[00000000]                      push dword [descriptor_fisier]
+    37 00000027 6A0A                                push dword 10
+    38 00000029 6A01                                push dword 1
+    39 0000002B 68[04000000]                        push bloc
+    40 00000030 FF15[00000000]                      call [fread]
+    41 00000036 83C410                              add esp, 4 * 4
+    42                                              
+    43 00000039 83F800                              cmp eax, 0
+    44 0000003C 742B                                je inchide_fisier
+    45                                              
+    46 0000003E 89C1                                mov ecx, eax
+    47 00000040 BE[04000000]                        mov esi, bloc
+    48                                              
+    49                                              for1:
+    50 00000045 B800000000                              mov eax, 0
+    51 0000004A AC                                      lodsb
+    52 0000004B 3C30                                    cmp al, '0'
+    53 0000004D 7216                                    jb treci_la_loop
+    54                                                  
+    55 0000004F 3C39                                    cmp al, '9'
+    56 00000051 7712                                    ja treci_la_loop
+    57                                                  
+    58 00000053 2C30                                    sub al, '0'
+    59                                                  
+    60 00000055 BB[3C000000]                            mov ebx, vector_de_frecvente
+    61 0000005A BA04000000                              mov edx, 4
+    62 0000005F F7E2                                    mul edx
+    63 00000061 01C3                                    add ebx, eax
+    64                                                  
+    65 00000063 FF03                                    inc dword [ebx]
+    66                                                  
+    67                                                  treci_la_loop:
+    68 00000065 E2DE                                    loop for1
+    69                                                  
+    70 00000067 EBB8                                jmp while1
+    71                                              
+    72                                          
+    73                                          inchide_fisier:
+    74 00000069 FF35[00000000]                  push dword [descriptor_fisier]
+    75 0000006F FF15[00000000]                  call [fclose]
+    76 00000075 83C404                          add esp, 4 * 1
+    77                                          
+    78 00000078 BE[3C000000]                    mov esi, vector_de_frecvente
+    79 0000007D B90A000000                      mov ecx, 10
+    80                                  
+    81                                          for2:
+    82 00000082 AD                                  lodsd
+    83 00000083 3B05[34000000]                      cmp eax, [maxi]
+    84                                              
+    85 00000089 721E                                jb treci_loop
+    86 0000008B A3[34000000]                        mov [maxi], eax
+    87 00000090 89F3                                mov ebx, esi
+    88 00000092 81EB[3C000000]                      sub ebx, vector_de_frecvente; cifra
+    89                                              
+    90 00000098 89D8                                mov eax, ebx
+    91 0000009A BB04000000                          mov ebx, 4
+    92 0000009F F7F3                                div ebx
+    93 000000A1 83E801                              sub eax, 1
+    94                                              
+    95 000000A4 A3[38000000]                        mov [cifra_max], eax
+    96                                              
+    97                                              treci_loop:
+    98 000000A9 E2D7                                loop for2
+    99                                         
+   100 000000AB FF35[34000000]                  push dword [maxi]
+   101 000000B1 FF35[38000000]                  push dword [cifra_max]
+   102 000000B7 68[1B000000]                    push mod_afisare
+   103 000000BC FF15[00000000]                  call [printf]
+   104 000000C2 83C408                          add esp, 4 * 2
+   105                                          
+   106                                          final:
+   107                                          
+   108 000000C5 6A00                            push    dword 0      
+   109 000000C7 FF15[00000000]                  call    [exit]       

@@ -1,0 +1,85 @@
+     1                                  ;Se citeste de la tastatura un sir de numere in baza 10, cu semn. Sa se determine valoarea maxima din sir si sa se afiseze in fisierul max.txt (fisierul va fi creat) valoarea maxima, in baza 16.
+     2                                  ; Dragomir Manuel, grupa 213, 14.12.2018, problema 25, laboratorul 9 multi modul
+     3                                  
+     4                                  bits 32
+     5                                  
+     6                                  global start
+     7                                  global n    
+     8                                  
+     9                                  extern exit       
+    10                                  extern maxim
+    11                                  extern fprintf
+    12                                  extern fopen
+    13                                  extern scanf
+    14                                        
+    15                                  import exit msvcrt.dll
+    16                                  import fprintf msvcrt.dll
+    17                                  import scanf msvcrt.dll
+    18                                  import fopen msvcrt.dll
+    19                                  
+    20                                  segment data use32 public class=data
+    21                                      ; ...
+    22                                      
+    23 00000000 <res 00000004>              maxi resd 1
+    24 00000004 257800                      format_hexa db '%x', 0
+    25 00000007 256400                      format_intreg db '%d', 0
+    26 0000000A <res 00000190>              v resd 100
+    27 0000019A <res 00000001>              n resb 1
+    28 0000019B <res 00000004>              var resd 1
+    29 0000019F 6D61782E74787400            nume_fisier db 'max.txt', 0
+    30 000001A7 7700                        mod_acces db 'w', 0
+    31 000001A9 <res 00000004>              descriptor_fisier resd 1
+    32                                  
+    33                                  segment code use32 public class=code
+    34                                      start:
+    35 00000000 68[9A010000]                    push n
+    36 00000005 68[07000000]                    push format_intreg
+    37 0000000A FF15[00000000]                  call [scanf]
+    38 00000010 83C408                          add esp, 4 * 2
+    39                                          
+    40 00000013 B900000000                      mov ecx, 0
+    41 00000018 8A0D[9A010000]                  mov cl, byte [n]
+    42                                          
+    43 0000001E BF[0A000000]                    mov edi, v
+    44                                          
+    45                                          citeste:
+    46 00000023 51                                  push ecx
+    47 00000024 68[9B010000]                        push var
+    48 00000029 68[07000000]                        push format_intreg
+    49 0000002E FF15[00000000]                      call [scanf]
+    50 00000034 83C408                              add esp, 4 * 2
+    51 00000037 59                                  pop ecx
+    52                                              
+    53 00000038 A1[9B010000]                        mov eax, [var]
+    54 0000003D AB                                  stosd
+    55 0000003E E2E3                                loop citeste
+    56                                          
+    57                                          
+    58                                          ; incepem functia de maxim
+    59                                          
+    60 00000040 B8[0A000000]                    mov eax, v; punem in eax adresa lui v
+    61 00000045 50                              push eax; punem pe stiva adresa lui v
+    62 00000046 E8(00000000)                    call maxim
+    63                                          
+    64 0000004B 58                              pop eax ; avem in eax rezultatul
+    65                                          
+    66 0000004C A3[00000000]                    mov [maxi], eax
+    67                                          
+    68 00000051 68[A7010000]                    push dword mod_acces
+    69 00000056 68[9F010000]                    push dword nume_fisier
+    70 0000005B FF15[00000000]                  call [fopen]
+    71 00000061 83C408                          add esp, 4 * 2
+    72                                              
+    73 00000064 A3[A9010000]                    mov [descriptor_fisier], eax
+    74 00000069 83F800                          cmp eax, 0
+    75 0000006C 741A                            je final
+    76                                          
+    77 0000006E FF35[00000000]                  push dword [maxi]
+    78 00000074 68[07000000]                    push format_intreg
+    79 00000079 FF35[A9010000]                  push dword [descriptor_fisier]
+    80 0000007F FF15[00000000]                  call [fprintf]
+    81 00000085 83C40C                          add esp, 4*3
+    82                                          
+    83                                          final:
+    84 00000088 6A00                            push    dword 0    
+    85 0000008A FF15[00000000]                  call    [exit]     

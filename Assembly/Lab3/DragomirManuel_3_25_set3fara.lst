@@ -1,0 +1,73 @@
+     1                                  ; Dragomir Manuel-Alexandru, gr. 213, 18.10.2015, tema lab3, problema 25
+     2                                  ;  Interpretare fara semn
+     3                                  ; (a*a+b+x)/(b+b)+c*c; a-word; b-byte; c-doubleword; x-qword
+     4                                  
+     5                                  bits 32 ; assembling for the 32 bits architecture
+     6                                  
+     7                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     8                                  global start        
+     9                                  
+    10                                  ; declare external functions needed by our program
+    11                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    12                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                      
+    19 00000000 1900                        a dw 25
+    20 00000002 0F                          b db 15
+    21 00000003 41000000                    c dd 65
+    22 00000007 6900000000000000            x dq 105
+    23 0000000F 00000000                    y dd 0
+    24 00000013 0000000000000000            aux dq 0
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ; ...
+    30                                       
+    31 00000000 66A1[00000000]                  mov ax, [a]; ax = a
+    32 00000006 668B1D[00000000]                mov bx, [a]; bx = a
+    33 0000000D 66F7E3                          mul bx; dx:ax = a*a
+    34                                          
+    35 00000010 66A3[0F000000]                  mov word[y], ax;
+    36 00000016 668915[11000000]                mov word[y+2], dx; y = a*a
+    37                                          
+    38 0000001D B800000000                      mov eax, 0; eax = 0
+    39 00000022 A0[02000000]                    mov al, [b]; eax = b
+    40                                          
+    41 00000027 0305[0F000000]                  add eax, [y]; eax = y + b = a*a + b
+    42 0000002D BA00000000                      mov edx, 0; edx:eax = a*a + b
+    43                                          
+    44 00000032 0305[07000000]                  add eax, dword[x];
+    45 00000038 1315[0B000000]                  adc edx, dword[x+4]; edx:eax = a*a + b + x
+    46                                          
+    47 0000003E BB00000000                      mov ebx, 0
+    48 00000043 8A1D[02000000]                  mov bl, [b]; bl = b
+    49 00000049 021D[02000000]                  add bl, [b]; bl = b+b 
+    50                                          
+    51 0000004F F7F3                            div ebx; edx:eax / ebx = eax = (a*a + b + x)/(b+b)
+    52                                          
+    53 00000051 A3[0F000000]                    mov [y], eax; y = eax = (a*a + b + x)/(b+b)
+    54                                          
+    55 00000056 A1[03000000]                    mov eax, [c]; eax = c
+    56 0000005B 8B1D[03000000]                  mov ebx, [c]; ebx = c
+    57 00000061 F7E3                            mul ebx; edx:eax = c*c
+    58                                          
+    59 00000063 A3[13000000]                    mov dword[aux], eax;
+    60 00000068 8915[17000000]                  mov dword[aux+4], edx;
+    61                                          
+    62 0000006E A1[0F000000]                    mov eax, [y]; = eax = (a*a + b + x)/(b+b)
+    63 00000073 BA00000000                      mov edx, 0; edx:eax = (a*a + b + x)/(b+b)
+    64                                          
+    65 00000078 0305[13000000]                  add eax, dword[aux];
+    66 0000007E 1315[17000000]                  adc edx, dword[aux+4]; edx:eax = (a*a + b + x)/(b+b) + c*c
+    67                                          
+    68                                          
+    69                                          
+    70                                          
+    71                                          ; exit(0)
+    72 00000084 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    73 00000086 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

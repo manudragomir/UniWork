@@ -1,0 +1,54 @@
+     1                                  ; Dragomir Manuel-Alexandru, gr. 213, 25.10.2015, tema lab4, problema 21
+     2                                  ;Se dau cuvintele A si B. Se cere dublucuvantul C:
+     3                                  ;bitii 0-3 ai lui C coincid cu bitii 5-8 ai lui B
+     4                                  ;bitii 4-10 ai lui C sunt invers fata de bitii 0-6 ai lui B
+     5                                  ;bitii 11-18 ai lui C sunt 1
+     6                                  ;bitii 19-31 ai lui C coincid cu bitii 3-15 ai lui B
+     7                                  
+     8                                  bits 32 ; assembling for the 32 bits architecture
+     9                                  
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                      ; ...
+    16 00000000 D6E8                        a dw 1110100011010110b
+    17 00000002 7954                        b dw 0101010001111001b
+    18 00000004 00000000                    c dd 0
+    19                                  
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ; ...
+    24                                      
+    25 00000000 B800000000                  mov eax, 0
+    26 00000005 BB00000000                  mov ebx, 0; aici vom calcula rezultatul 
+    27 0000000A 66A1[02000000]              mov ax, [b];
+    28 00000010 6625E001                    and ax, 111100000b; izolez bitii 5-8B
+    29 00000014 B105                        mov cl, 5
+    30 00000016 66D3C8                      ror ax, cl; rotesc la dreapta 5 pozitii
+    31 00000019 09C3                        or ebx, eax; c(0,3) = b(5-8)
+    32                                      
+    33 0000001B 66A1[02000000]              mov ax, [b]
+    34 00000021 66F7D0                      not ax; ax = !b
+    35 00000024 6683E07F                    and ax, 7Fh; ax = ! b(0,6)
+    36 00000028 B104                        mov cl, 4
+    37 0000002A D3C0                        rol eax, cl; ax = !b(4,10)
+    38 0000002C 09C3                        or ebx, eax; bx = rez
+    39                                      
+    40 0000002E 81CB00F80700                or ebx, 7F800h; bx = bitii rezultatului 11-18 vor fi 1
+    41                                      
+    42 00000034 B800000000                  mov eax, 0
+    43 00000039 66A1[02000000]              mov ax, [b]
+    44 0000003F 6683E0F8                    and ax, 1111111111111000b; ax = ia bitii 3-15 ai lui B
+    45 00000043 B110                        mov cl, 16
+    46 00000045 D3C0                        rol eax, cl;
+    47 00000047 09C3                        or ebx, eax
+    48                                      
+    49 00000049 891D[04000000]              mov [c], ebx;
+    50                                      
+    51                                          ; exit(0)
+    52 0000004F 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    53                                          call    [exit]       ; call exit to terminate the program
+    53          ******************       error: symbol `exit' undefined

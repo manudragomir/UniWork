@@ -1,0 +1,59 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf
+     6                                        
+     7                                  import exit msvcrt.dll
+     8                                  import scanf msvcrt.dll
+     9                                  import printf msvcrt.dll
+    10                                  
+    11                                  segment data use32 class=data
+    12 00000000 <res 00000004>              a       resd    1
+    13 00000004 <res 00000002>              b       resw    1
+    14 00000006 <res 00000004>              result  resd    1
+    15 0000000A 2564256400                  format_citire  db    '%d%d', 0
+    16 0000000F 2564206D6F64202564-         format_afisare  db    '%d mod %d = %d', 0
+    16 00000018 203D20256400       
+    17                                      
+    18                                      
+    19                                  segment code use32 class=code
+    20                                      start:
+    21 00000000 68[04000000]                    push b
+    22 00000005 68[00000000]                    push a
+    23 0000000A 68[0A000000]                    push format_citire
+    24 0000000F FF15[00000000]                  call [scanf]
+    25 00000015 83C40C                          add esp, 4 * 3
+    26                                          
+    27 00000018 66A1[04000000]                  mov ax, [b]
+    28 0000001E 98                              cwde
+    29 0000001F 89C3                            mov ebx, eax
+    30                                          
+    31 00000021 A1[00000000]                    mov eax, [a]
+    32 00000026 99                              cdq; edx:eax / ebx = 
+    33                                          
+    34 00000027 F7FB                            idiv ebx
+    35                                          
+    36 00000029 8915[06000000]                  mov [result], edx
+    37                                          
+    38 0000002F 668B1D[04000000]                mov bx, [b]
+    39 00000036 66F7C30080                      test bx, 8000h
+    40                                          
+    41 0000003B 66BB0000                        mov bx, 0
+    42                                          
+    43 0000003F 7404                            jz here
+    44 00000041 66BBFFFF                        mov bx, 0FFFFh
+    45                                          
+    46                                          here:
+    47                                          
+    48 00000045 FF35[06000000]                  push dword [result]
+    49 0000004B 6653                            push word bx
+    50 0000004D 66FF35[04000000]                push word [b]
+    51 00000054 FF35[00000000]                  push dword [a]
+    52 0000005A 68[0F000000]                    push format_afisare
+    53 0000005F FF15[00000000]                  call [printf]
+    54 00000065 83C410                          add esp, 4 * 4
+    55                                          
+    56                                          
+    57 00000068 6A00                            push    dword 0
+    58 0000006A FF15[00000000]                  call    [exit]

@@ -1,0 +1,62 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fprintf, scanf, fopen, fclose, printf          ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll
+     9                                  import fprintf msvcrt.dll
+    10                                  import fopen msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import scanf msvcrt.dll
+    13                                  import printf msvcrt.dll
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 <res 0000001F>              nume_de_fisier resb 31
+    19 0000001F <res 00000079>              text resb 121
+    20 00000098 <res 00000014>              descriptor_file resb 20
+    21 000000AC 7700                        mod_acces db "w", 0
+    22 000000AE 257300                      format db "%s", 0
+    23 000000B1 4E756D656C65206669-         mesaj db "Numele fisierului este: ", 0
+    23 000000BA 73696572756C756920-
+    23 000000C3 657374653A2000     
+    24 000000CA 54657874756C206573-         mesaj1 db "Textul este: ", 0
+    24 000000D3 74653A2000         
+    25                                      
+    26                                  
+    27                                  ; our code starts here
+    28                                  segment code use32 class=code
+    29                                      start:
+    30                                          ; ...
+    31                                          
+    32 00000000 68[B1000000]                    push dword mesaj
+    33 00000005 FF15[00000000]                  call [printf]
+    34 0000000B 83C404                          add esp, 4*1
+    35                                          
+    36 0000000E 68[00000000]                    push dword nume_de_fisier
+    37 00000013 68[AE000000]                    push dword format
+    38 00000018 FF15[00000000]                  call [scanf]
+    39 0000001E 83C408                          add esp, 4 * 2
+    40                                          
+    41 00000021 68[CA000000]                    push dword mesaj1
+    42 00000026 FF15[00000000]                  call [printf]
+    43 0000002C 83C404                          add esp, 4*1
+    44                                          
+    45 0000002F 68[1F000000]                    push dword text
+    46 00000034 68[AE000000]                    push dword format
+    47 00000039 FF15[00000000]                  call [scanf]
+    48 0000003F 83C408                          add esp, 4 * 2
+    49                                          
+    50 00000042 68[AC000000]                    push dword mod_acces
+    51 00000047 68[00000000]                    push dword nume_de_fisier
+    52 0000004C FF15[00000000]                  call [fopen]
+    53 00000052 83C408                          add esp, 4 * 2
+    54                                          
+    55                                          
+    56                                      
+    57                                          ; exit(0)
+    58 00000055 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    59 00000057 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

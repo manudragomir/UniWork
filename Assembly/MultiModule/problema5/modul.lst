@@ -1,0 +1,15 @@
+     1                                  bits 32
+     2                                  
+     3                                  segment code use32 public code
+     4                                  global mate
+     5                                  
+     6                                  mate:
+     7                                          ; a + b - c
+     8 00000000 8B44240C                        mov eax, [esp + 12]; a 
+     9 00000004 8B5C2408                        mov ebx, [esp + 8]; b
+    10 00000008 8B4C2404                        mov ecx, [esp + 4]; c 
+    11                                          
+    12 0000000C 01D8                            add eax, ebx
+    13 0000000E 29C8                            sub eax, ecx
+    14                                                  
+    15 00000010 C20C00                          ret 12

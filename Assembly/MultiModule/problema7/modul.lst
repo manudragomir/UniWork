@@ -1,0 +1,40 @@
+     1                                  bits 32
+     2                                  
+     3                                  global prefix
+     4                                  extern rezultat
+     5                                  
+     6                                  segment code use32 class=code
+     7                                      prefix:
+     8                                          
+     9 00000000 8B742404                        mov esi, [esp + 4]
+    10 00000004 8B442408                        mov eax, [esp + 8]
+    11 00000008 8B7C240C                        mov edi, [esp + 12]
+    12 0000000C 8B5C2410                        mov ebx, [esp + 16]
+    13                                          
+    14 00000010 E821000000                      call minim
+    15 00000015 89C1                            mov ecx, eax
+    16 00000017 FC                              cld
+    17 00000018 BA00000000                      mov edx, 0
+    18                                          
+    19                                          for1:
+    20 0000001D A6                                  cmpsb
+    21 0000001E 750C                                jne finalu
+    22                                              
+    23 00000020 8A47FF                              mov al, [edi - 1]
+    24 00000023 8882[00000000]                      mov [rezultat + edx], al
+    25 00000029 42                                  inc edx
+    26 0000002A E2F1                                loop for1
+    27                                              
+    28                                          finalu:
+    29 0000002C C682[00000000]00                    mov byte [rezultat + edx], 0
+    30                                          
+    31 00000033 C21000                          ret 16
+    32                                          
+    33                                      minim:
+    34 00000036 39D8                            cmp eax, ebx
+    35 00000038 7302                            jae ok
+    36                                          
+    37 0000003A 89D8                            mov eax, ebx
+    38                                          
+    39                                          ok:
+    40 0000003C C3                              ret

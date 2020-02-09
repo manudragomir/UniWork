@@ -1,0 +1,66 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      
+    15 00000000 01020304                    S1 db 1, 2, 3, 4
+    16                                      len1 equ $ - S1
+    17                                      
+    18 00000004 05060708                    S2 db 5, 6, 7, 8
+    19                                      len2 equ $ - S2
+    20                                      
+    21 00000008 <res 00000004>              D resb len1
+    22                                  
+    23                                  ; our code starts here
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ; ...
+    27                                          
+    28 00000000 B904000000                  mov ecx, len1
+    29 00000005 E338                        jecxz Sfarsit
+    30                                      
+    31 00000007 B204                        mov dl, len1
+    32 00000009 80FA04                      cmp dl, len2
+    33 0000000C 7531                        jne Sfarsit
+    34                                      
+    35 0000000E BE00000000                  mov esi, 0
+    36                                      For_1:
+    37 00000013 8A86[00000000]                  mov al, [S1 + esi]
+    38 00000019 8A9E[04000000]                  mov bl, [S2 + esi]
+    39                                          
+    40 0000001F 89F2                            mov edx, esi
+    41 00000021 83E201                          and edx, 1       
+    42                                          
+    43 00000024 7402                            je e_par
+    44 00000026 750A                            jne e_impar
+    45                                          
+    46                                          e_par:
+    47 00000028 00D8                                add al, bl
+    48 0000002A 8886[08000000]                      mov [D + esi], al
+    49 00000030 EB0A                                jmp ready
+    50                                             
+    51                                          e_impar:
+    52 00000032 28D8                                sub al, bl
+    53 00000034 8886[08000000]                      mov [D + esi], al
+    54 0000003A EB00                                jmp ready
+    55                                              
+    56                                          ready:
+    57 0000003C 46                              inc esi
+    58 0000003D E2D4                        loop For_1
+    59                                      
+    60                                      
+    61                                      
+    62                                      Sfarsit:
+    63                                      
+    64                                          ; exit(0)
+    65 0000003F 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    66 00000041 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

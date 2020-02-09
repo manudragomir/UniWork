@@ -1,0 +1,55 @@
+     1                                  ;Sa se citeasca de la tastatura un numar in baza 10 si un numar in baza 16. Sa se afiseze in baza 10 numarul de biti 1 ai sumei celor doua numere citite. Exemplu:
+     2                                  ;a = 32 = 0010 0000b
+     3                                  ;b = 1Ah = 0001 1010b
+     4                                  ;32 + 1Ah = 0011 1010b
+     5                                  ;Se va afisa pe ecran valoarea 4.
+     6                                  bits 32
+     7                                  
+     8                                  global start        
+     9                                  
+    10                                  extern exit, scanf, printf
+    11                                        
+    12                                  import exit msvcrt.dll
+    13                                  import scanf msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  
+    16                                  segment data use32 class=data
+    17 00000000 <res 00000004>              a   resd    1
+    18 00000004 <res 00000004>              b   resd    1
+    19 00000008 00000000                    cnt  dd     0
+    20 0000000C 256400                      format_citire1      db      '%d', 0
+    21 0000000F 257800                      format_citire2      db      '%x', 0
+    22                                      
+    23                                  segment code use32 class=code
+    24                                      start:
+    25 00000000 68[00000000]                    push a
+    26 00000005 68[0C000000]                    push format_citire1
+    27 0000000A FF15[00000000]                  call [scanf]
+    28 00000010 83C408                          add esp, 4 * 2
+    29                                          
+    30 00000013 68[04000000]                    push b
+    31 00000018 68[0F000000]                    push format_citire2
+    32 0000001D FF15[00000000]                  call [scanf]
+    33 00000023 83C408                          add esp, 4 * 2
+    34                                          
+    35 00000026 A1[00000000]                    mov eax, [a]
+    36 0000002B 8B1D[04000000]                  mov ebx, [b]
+    37 00000031 01D8                            add eax, ebx
+    38                                          
+    39 00000033 B91F000000                      mov ecx, 31
+    40                                          
+    41                                          for1:
+    42 00000038 D1E8                                shr eax, 1
+    43 0000003A 7306                                jnc endi
+    44                                              
+    45 0000003C FF05[08000000]                      inc dword [cnt]
+    46                                          
+    47                                              endi:
+    48 00000042 E2F4                                loop for1
+    49                                          
+    50 00000044 FF35[08000000]                  push dword [cnt]
+    51 0000004A 68[0C000000]                    push format_citire1
+    52 0000004F FF15[00000000]                  call [printf]
+    53 00000055 83C408                          add esp, 4 * 2
+    54 00000058 6A00                            push    dword 0
+    55 0000005A FF15[00000000]                  call    [exit]
