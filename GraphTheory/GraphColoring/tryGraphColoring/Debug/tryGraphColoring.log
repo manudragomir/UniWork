@@ -1,0 +1,4 @@
+﻿  WelshPowell.cpp
+c:\users\manuel\source\repos\trygraphcoloring\trygraphcoloring\welshpowell.cpp(45): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel\source\repos\trygraphcoloring\trygraphcoloring\welshpowell.cpp(52): warning C4018: '<': signed/unsigned mismatch
+  tryGraphColoring.vcxproj -> C:\Users\Manuel\source\repos\tryGraphColoring\Debug\tryGraphColoring.exe

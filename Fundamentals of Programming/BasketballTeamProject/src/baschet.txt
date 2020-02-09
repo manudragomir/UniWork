@@ -1,0 +1,14 @@
+Graham,Paul,225,Extrema
+Dumitrescu,Tudor,195,Extrema
+Mal,Dive,250,Extrema
+Thai,Landa,190,Pivot
+Name,Prename,192,Extrema
+Dra,Ma,220,Extrema
+Ala,Bala,250,Fundas
+Kobe,Bryant,189,Extrema
+Lebron,James,183,Pivot
+Rajon,Rondo,193,Extrema
+Shaq,ONeal,198,Pivot
+Ion,IOn,213,Pivot
+Ion,Ion,260,Extrema
+Ana,Balinth,182,Fundas

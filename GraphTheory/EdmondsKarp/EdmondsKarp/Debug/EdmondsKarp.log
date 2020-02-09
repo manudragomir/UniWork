@@ -1,0 +1,4 @@
+﻿  EdmondsKarp.cpp
+c:\users\manuel\desktop\faculta\anul1 - semestrul2\grafuri\laborator\lab6\edmondskarp\edmondskarp\edmondskarp.cpp(75): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel\desktop\faculta\anul1 - semestrul2\grafuri\laborator\lab6\edmondskarp\edmondskarp\edmondskarp.cpp(81): warning C4018: '<': signed/unsigned mismatch
+  EdmondsKarp.vcxproj -> C:\Users\Manuel\Desktop\Faculta\Anul1 - Semestrul2\Grafuri\LABORATOR\Lab6\EdmondsKarp\Debug\EdmondsKarp.exe

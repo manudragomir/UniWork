@@ -1,0 +1,3 @@
+﻿  PruferEficient.cpp
+c:\users\manuel\source\repos\prufereficient\prufereficient\prufereficient.cpp(116): warning C4018: '<': signed/unsigned mismatch
+  PruferEficient.vcxproj -> C:\Users\Manuel\source\repos\PruferEficient\Debug\PruferEficient.exe

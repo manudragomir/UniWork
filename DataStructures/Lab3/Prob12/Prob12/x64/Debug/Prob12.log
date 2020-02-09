@@ -1,0 +1,8 @@
+﻿  IteratorLI.cpp
+  LI.cpp
+c:\users\manuel\desktop\faculta\anul1 - semestrul2\structuri de date si algoritmi\laborator\lab3\prob12\prob12\li.cpp(88): warning C4101: 'sters': unreferenced local variable
+c:\users\manuel\desktop\faculta\anul1 - semestrul2\structuri de date si algoritmi\laborator\lab3\prob12\prob12\li.cpp(110): warning C4101: 'val': unreferenced local variable
+c:\users\manuel\desktop\faculta\anul1 - semestrul2\structuri de date si algoritmi\laborator\lab3\prob12\prob12\li.cpp(130): warning C4101: 'sters': unreferenced local variable
+  main.cpp
+  Generating Code...
+  Prob12.vcxproj -> C:\Users\Manuel\Desktop\Faculta\Anul1 - Semestrul2\Structuri de date si algoritmi\LABORATOR\Lab3\Prob12\x64\Debug\Prob12.exe

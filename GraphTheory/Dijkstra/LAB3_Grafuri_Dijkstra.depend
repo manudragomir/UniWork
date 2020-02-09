@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1553794663 source:c:\users\manuel\desktop\pe\lab3_grafuri_dijkstra\main.cpp
+	<iostream>
+	<queue>
+	<vector>
+	<fstream>
+

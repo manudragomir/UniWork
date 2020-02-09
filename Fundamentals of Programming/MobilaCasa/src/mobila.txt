@@ -1,0 +1,13 @@
+998,Scaun de birou,ergonomic,1
+133,Dulap,dulap Elvilla cu 6 rafturi,299
+17,Canapea Ella,canapea extensibila de 3 persoane,2199
+3,Taburete,taburete mic,2000
+4,Sifonier,exact ce iti doresti,250
+5,Cuier,pentru toate hainele, 499
+6,Fotoliu,cald,217
+7,Masa,pentru cina,208
+8,Masuta,pentru camping,890
+9,Scaun,pentru mancat,918
+10,Biblioteca,pentru impatimiti de lectura, 2599
+11,Masa,pentru televizor,1400
+999,Canapea ergonomica,extensibila,50000

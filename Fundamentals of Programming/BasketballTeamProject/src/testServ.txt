@@ -1,0 +1,7 @@
+a,b,181,Fundas
+c,d,181,Fundas
+e,f,182,Pivot
+g,h,183,Extrema
+i,j,184,Extrema
+k,l,185,Extrema
+z,x,180,Pivot

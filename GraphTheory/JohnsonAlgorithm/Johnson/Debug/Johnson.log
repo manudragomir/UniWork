@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\manuel\source\repos\johnson\johnson\source.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel\source\repos\johnson\johnson\source.cpp(51): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel\source\repos\johnson\johnson\source.cpp(115): warning C4018: '<': signed/unsigned mismatch
+  Johnson.vcxproj -> C:\Users\Manuel\source\repos\Johnson\Debug\Johnson.exe

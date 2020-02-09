@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tryGraphColoring", "tryGraphColoring\tryGraphColoring.vcxproj", "{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Debug|x64.ActiveCfg = Debug|x64
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Debug|x64.Build.0 = Debug|x64
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Debug|x86.ActiveCfg = Debug|Win32
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Debug|x86.Build.0 = Debug|Win32
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Release|x64.ActiveCfg = Release|x64
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Release|x64.Build.0 = Release|x64
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Release|x86.ActiveCfg = Release|Win32
+		{23E230A7-E2B9-4DC7-9458-BDE8F3BF8EC4}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76DA20E9-FD7E-4849-95F7-C71D44FB877E}
+	EndGlobalSection
+EndGlobal

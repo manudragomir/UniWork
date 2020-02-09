@@ -1,0 +1,100 @@
+\documentclass[12pt,leqno]{article}
+\usepackage{amsmath,amsfonts,amssymb}
+
+%%%%%%%%%%%%>>>GRAFICA<<<<%%%%%%%%%%%%
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{slashbox}
+\usepackage{diagbox}
+\usepackage{array,booktabs}
+
+\usepackage{pdfsync}
+\usepackage{xcolor}
+\setlength{\textwidth}{18cm}
+\setlength{\textheight}{25cm}
+\oddsidemargin=-1.2cm
+\setlength{\topmargin}{-1in}
+\evensidemargin=-0.7cm
+
+\newcommand{\ii}{\^\i}
+\newcommand{\ds}{\displaystyle}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\pagestyle{empty}
+
+{\large \textbf{Laboratorul 6}}
+
+\bigskip
+
+\noindent \textbf{Coeficientul de corela\c tie} (Pearson) al variabilelor aleatoare $X$ \c si $Y$ este
+$$\rho(X,Y)=\frac{{\rm cov}(X,Y)}{\sqrt{V(X)V(Y)}},$$
+dac\u a ${\rm cov}(X,Y), V(X),V(Y)$ exist\u a \c si $V(X)V(Y)\neq0$, unde ${\rm cov}(X,Y)=E\Big((X-E(X))(Y-E(Y))\Big)$ este \textbf{covarian\c ta} lui $X$ \c si $Y$.
+
+\noindent $\rhd$ $\rho(X,Y)\in[-1,1]$ m\u asoar\u a dependen\c ta liniar\u a \^intre variabilele aleatoare $X$ \c si $Y$.
+
+\noindent $\rhd$ Dac\u a $X$ \c si $Y$ sunt \textit{independente}, atunci ${\rm cov}(X,Y)=0$, adic\u a $X$ \c si $Y$ sunt \textit{necorelate}.
+
+\noindent $\rhd$ Dac\u a $|\rho(X,Y)|=1$, atunci exist\u a $a,b\in\mathbb{R}$ astfel \ii nc\^at $Y=aX+b$ sau $X=aY+b$.
+
+\bigskip
+
+\noindent {\bf Coeficientul de corela\c tie} (Pearson) {\bf de selec\c tie} al datelor de selec\c tie $x_1,\ldots,x_n$ (nu toate egale) \c si $y_1,\ldots,y_n$ (nu toate egale) este
+$$\bar{\rho}=\frac{\displaystyle\sum_{i=1}^n (x_i-\bar x_n)(y_i-\bar y_n)}{\displaystyle\sqrt{\sum_{i=1}^n (x_i-\bar x_n)^2 \sum_{i=1}^n (y_i-\bar y_n)^2}},$$
+unde $\bar x_n=\ds\frac 1 n \left(x_1+\dots+x_n\right)$ \c si $\bar y_n=\ds\frac 1 n \left(y_1+\dots+y_n\right)$ sunt mediile de selec\c tie.
+
+\bigskip
+
+{\bf 1.}  {\bf i)} Fie $X\sim N(1,1)$ \c si $Y\sim N(3,1)$ variabile aleatoare independente. Simula\c ti $n\in\{100,500,1000\}$ valori pentru $X$, respectiv $Y$, apoi estima\c ti urm\u atoarele valori: $V(X)$, $V(Y)$, $E(X\cdot Y)$, $|\rho(X,Y)|$, $P(X<2,Y>1)$. Compara\c ti rezultatele ob\c tinute cu valorile teoretice.
+
+{\bf ii)} Fie $X\sim N(1,1)$ \c si $Y=3X+1$ variabile aleatoare independente. Simula\c ti $n\in\{100,500,1000\}$ valori pentru $X$, respectiv $Y$, apoi estima\c ti urm\u atoarele valori:  $V(X)$, $V(Y)$, $E(X\cdot Y)$, $|\rho(X,Y)|$, $P(X<2,Y>1)$. Compara\c ti rezultatele ob\c tinute cu valorile teoretice.
+
+{Func\c tii utile: \verb var , \verb mean , \verb corrcoef , \verb normcdf .}
+
+\newpage
+
+\noindent \textbf{\large Metode Monte Carlo pentru integrare numeric\u a}
+
+\medskip
+
+\noindent Fie $g:[a,b]\to [0,\infty)$ o func\c tie continu\u a \c si $M>0$ astfel \^\i nc\^at $g(x)\le M$, oricare ar fi $x\in[a,b]$. Consider\u am urm\u atoarele metode pentru aproximarea integralei $\ds \int_a^b g(x)\,dx$ folosind valori aleatoare.
+
+\medskip
+
+\noindent\textbf{Metoda 1:}\\
+$\bullet$ Consider\u am $(U_n)_{n}$ \c sir de v.a. independente uniform distribuite pe $[a,b]$ \c si not\u am $X_n=g(U_n)$.\\
+$\bullet$ $(X_n)_n$ satisface LTNM, adic\u a
+$$ \frac{1}{n}\sum_{k=1}^n X_k\stackrel{a.s.}{\longrightarrow} E(X_1)=\frac{1}{b-a} \int_a^b g(t)dt.$$
+$\bullet$ \^In simul\u ari:
+$$ \int_a^b g(t)dt \approx (b-a)\frac{1}{n}\left(g(u_1)+\dots+ g(u_n)\right),  \mbox{ pentru $n$ suficient de mare},$$
+unde $u_1,\ldots,u_n$ sunt valori aleatoare generate independent conform distribu\c tiei uniforme pe intervalul $[a,b]$.
+
+\medskip
+
+\noindent\textbf{Metoda 2:}\\
+$\bullet$ Fie $(X,Y)$ un vector aleator care are distribu\c tia uniform\u a pe $[a,b]\times[0,M]$.\\
+$\bullet$ Folosind probabilitatea geometric\u a (a se revedea Laboratorul 2), avem:
+$$ P\left((X,Y)\mbox{ este sub graficul lui } g\right)=\frac{\mbox{aria subgraficului lui } g}{\mbox{aria dreptunghiului } [a,b]\times[0,M]}=\frac{1}{(b-a)M}\int_a^b g(t)dt.$$
+$\bullet$ \^In simul\u ari: 
+$$ {\int_a^b g(t)dt\approx \frac{\#\{k\in\{1,...,n\}: y_k\le g(x_k)\}}{n}(b-a)M} 
+\mbox{ , pentru $n$ suficient de mare}, $$
+unde $(x_1,y_1),\ldots,(x_n,y_n)$ sunt perechi de numere aleatoare generate independent conform distribu\c tiei uniforme pe dreptunghiul $[a,b]\times[0,M]$. 
+
+\bigskip
+
+{\bf 2.} Implementa\c ti \ii n Matlab  cele dou\u a metode Monte Carlo pentru integrarea numeric\u a a unei func\c tii continue $g:[a,b]\to [0,\infty)$. Testa\c ti programele realizate cu func\c tiile:\\
+{\bf i)} $g_1:[-2,2]\to\mathbb{R}$, $g_1(x)=e^{-x^2}$, $x\in[-2,2]$;\\
+{\bf ii)} $g_2:[-1,3]\to\mathbb{R}$, $g_2(x)=|\sin(e^{x})|$, $x\in[-1,3]$.\\
+{\bf iii)} $g_3:[-1,2]\to [0,\infty)$, $g_3(x)=\begin{cases}\ds\frac{x^2}{1+x^2},& x\in[-1,0] \\ \sqrt{2x-x^2},& x\in(0,2].\end{cases}$
+
+Compara\c ti rezultatele ob\c tinute cu rezultatele date de func\c tia \verb integral .
+
+
+\end{document}
+
