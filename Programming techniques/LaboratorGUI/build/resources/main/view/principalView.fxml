@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Principala.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+      <Tab fx:id="idWelcome" text="Welcome" />
+    <Tab fx:id="idTabStudenti" text="Studenti" />
+    <Tab fx:id="idTabTeme" text="Teme" />
+      <Tab fx:id="idTabNote" text="Note" />
+  </tabs>
+</TabPane>

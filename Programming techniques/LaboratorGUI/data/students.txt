@@ -1,0 +1,6 @@
+1;Ana1;Maria;213;a@csubbcluj.ro;profesor1
+2;Ana2;Maria;213;a@csubbcluj.ro;profesor1
+3;Ana3;Maria;217;a@csubbcluj.ro;profesor1
+4;Ana4;Maria;216;a@csubbcluj.ro;profesor2
+5;Ana5;Maria;215;a@csubbcluj.ro;profesor2
+6;Ana6;Maria;214;a@csubbcluj.ro;profesor3

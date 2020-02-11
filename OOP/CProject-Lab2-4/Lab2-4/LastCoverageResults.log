@@ -1,0 +1,21 @@
+[2019-03-22 12:57:36] [info] Start Program:
+Path:"C:\Users\Manuel\source\repos\Lab2-4\Debug\Lab2-4.exe"
+Arguments:
+Working directory: "C:\Users\Manuel\source\repos\Lab2-4\Lab2-4\"
+Modules: Selected: C:\Users\Manuel\source\repos\Lab2-4\Debug\Lab2-4.exe Excluded: 
+Sources: Selected: C:\Users\Manuel\source\repos\Lab2-4\Lab2-4 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\Manuel\AppData\Local\Temp\wm1lnqap.uyp 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2019-03-22 12:57:36] [info] Module: C:\Users\Manuel\source\repos\Lab2-4\Debug\Lab2-4.exe is selected because it matches selected pattern: C:\Users\Manuel\source\repos\Lab2-4\Debug\Lab2-4.exe
+[2019-03-22 12:57:39] [info] ----------------------------------------------------
+[2019-03-22 12:57:39] [info] Coverage binary generated in file: C:\Users\Manuel\AppData\Local\Temp\wm1lnqap.uyp
+[2019-03-22 12:57:39] [info] ----------------------------------------------------

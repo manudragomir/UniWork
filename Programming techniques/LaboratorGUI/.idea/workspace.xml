@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="40b7c927-ce9f-418e-9def-336f24a706f4" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="note: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="note: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="roles" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1U3p7OkSYZh43PzmLpU9rZbN7wT" />
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src\main\resources\view" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src\main\java\service\config" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src\main\java\service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src\main\resources" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src\main\java" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src" />
+      <recent name="C:\Users\Manuel\Desktop\sem1_223\LaboratorGUI\src\main\java\controller" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MainConsola">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="LaboratorGUI.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainConsola" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainConsola" />
+      <module name="LaboratorGUI.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainConsola" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40b7c927-ce9f-418e-9def-336f24a706f4" name="Default Changelist" comment="" />
+      <created>1574594964511</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574594964511</updated>
+      <workItem from="1574594969287" duration="10669000" />
+      <workItem from="1574618390157" duration="6885000" />
+      <workItem from="1574718387884" duration="509000" />
+      <workItem from="1574779311842" duration="602000" />
+      <workItem from="1574870223148" duration="2951000" />
+      <workItem from="1575058049992" duration="151000" />
+      <workItem from="1575377307275" duration="8755000" />
+      <workItem from="1575390954416" duration="549000" />
+      <workItem from="1575397990899" duration="12203000" />
+      <workItem from="1575413821268" duration="345000" />
+      <workItem from="1575443424984" duration="2065000" />
+      <workItem from="1575457520317" duration="3860000" />
+      <workItem from="1575475515556" duration="2838000" />
+      <workItem from="1575671499372" duration="601000" />
+      <workItem from="1575724224044" duration="592000" />
+      <workItem from="1575732548324" duration="64000" />
+      <workItem from="1575982164758" duration="12046000" />
+      <workItem from="1576068584196" duration="3856000" />
+      <workItem from="1576080612752" duration="4837000" />
+      <workItem from="1576085819355" duration="66000" />
+      <workItem from="1576649940471" duration="937000" />
+      <workItem from="1578464237509" duration="215000" />
+      <workItem from="1578521641427" duration="361000" />
+      <workItem from="1578600786204" duration="2762000" />
+      <workItem from="1578650008245" duration="16245000" />
+      <workItem from="1578673944797" duration="10407000" />
+      <workItem from="1578694697715" duration="8907000" />
+      <workItem from="1578731010978" duration="9200000" />
+      <workItem from="1578746274799" duration="17929000" />
+      <workItem from="1578773953621" duration="10195000" />
+      <workItem from="1578784820352" duration="1597000" />
+      <workItem from="1578855500165" duration="606000" />
+      <workItem from="1579072930452" duration="609000" />
+      <workItem from="1579076162186" duration="1143000" />
+      <workItem from="1579088168226" duration="8192000" />
+      <workItem from="1579104914720" duration="9263000" />
+      <workItem from="1579114542720" duration="196000" />
+      <workItem from="1579114822212" duration="13293000" />
+      <workItem from="1579130678708" duration="2291000" />
+      <workItem from="1579133030699" duration="573000" />
+      <workItem from="1579169283208" duration="1853000" />
+      <workItem from="1579174883757" duration="1230000" />
+      <workItem from="1579191987737" duration="712000" />
+      <workItem from="1579213818071" duration="488000" />
+      <workItem from="1579214355635" duration="1412000" />
+      <workItem from="1579806249495" duration="26000" />
+      <workItem from="1579962979731" duration="52000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="chartArea" language="JAVA" />
+        <watch expression="findOne(10)" language="JAVA" />
+        <watch expression="findOne(10L)" language="JAVA" />
+        <watch expression="findOne(new Long(10))" language="JAVA" />
+        <watch expression="serviceStudent.getAllStudents()" language="JAVA" />
+        <watch expression="list" language="JAVA" />
+        <watch expression="getServiceStudent().getAllStudents()" language="JAVA" />
+        <watch expression="s.getId()" language="JAVA" />
+        <watch expression="n" language="JAVA" />
+        <watch expression="epsilon" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

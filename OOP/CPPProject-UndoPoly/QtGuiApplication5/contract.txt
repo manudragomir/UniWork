@@ -1,0 +1,3 @@
+ALGEBRA 7 S1 Mo2
+SD 10 S2 Serban
+SDA 10 S2 Didi

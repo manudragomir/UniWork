@@ -1,0 +1,11 @@
+.dialog-pane{
+    -fx-background-color: #790604;
+}
+
+.dialog-pane .content {
+    -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-font-family: Consolas;
+    -fx-text-fill: yellow;
+}

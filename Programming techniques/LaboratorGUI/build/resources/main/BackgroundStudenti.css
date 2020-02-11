@@ -1,0 +1,137 @@
+.label
+{
+    -fx-font-family: "Book Antiqua";
+    -fx-font-weight: Bold;
+    -fx-font-size: 18;
+    -fx-text-fill: #06054B;
+}
+
+.text-area .content{
+    -fx-font-family: Consolas;
+    -fx-background-color: #dbebf2;
+    -fx-text-fill: red;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.check-box{
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-text-fill: #06054B;
+}
+
+.check-box .box{
+    -fx-background-color: #dbebf2;
+
+}
+
+.check-box:selected .mark {
+
+    -fx-background-color: #06054B;
+
+}
+
+.check-box:selected .box {
+
+    -fx-background-color: #dbebf2;
+}
+
+.split-pane{
+    -fx-background-color: #fed13a;
+}
+
+.text-field
+{
+
+    -fx-background-color: #dbebf2;
+}
+
+.tab-pane
+{
+    -fx-background-color: #fed13a;
+}
+
+.button
+{
+    -fx-font-family: Garamond;
+    -fx-font-size: 25;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #3203B1;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: #fed13a;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #fed13a;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #3203B1;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #3203B1;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.combo-box-base{
+    -fx-background-color: #dbebf2;
+    -fx-text-fill: red;
+}
+
+.dialog-pane{
+    -fx-border-color:black;
+    -fx-border-width:2.0px;
+}
+
+.dialog-pane > .content.label {
+    -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+    -fx-background-color: yellow;
+    -fx-text-fill:black;
+    -fx-font-size:15.0px;
+}
+
+.radio-button {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: #228c22;
+}

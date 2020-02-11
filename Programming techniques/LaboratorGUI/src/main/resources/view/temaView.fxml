@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: fed13a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TemaController">
+   <children>
+      <SplitPane fx:id="idSplit" dividerPositions="0.5601336302895323" layoutY="73.0" prefHeight="372.0" prefWidth="900.0" style="-fx-background-color: fed13a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <items>
+          <AnchorPane maxHeight="500.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="422.0">
+               <children>
+                  <TableView id="tblStudenti" fx:id="tblTeme" prefHeight="361.0" prefWidth="506.0" style="-fx-background-color: fed13a;">
+                    <columns>
+                        <TableColumn fx:id="tblId" prefWidth="32.0" text="ID" />
+                        <TableColumn fx:id="tblStartWeek" prefWidth="111.0" text="Start" />
+                        <TableColumn fx:id="tblDeadlineWeek" prefWidth="135.0" text="Deadline" />
+                        <TableColumn fx:id="tblDescriere" prefWidth="227.0" text="Descriere" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="421.0">
+               <children>
+                  <TextField fx:id="txtDeadlineWeek" layoutX="247.0" layoutY="47.0" prefHeight="37.0" prefWidth="105.0" AnchorPane.bottomAnchor="286.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="40.0" />
+                  <Label layoutX="17.0" layoutY="46.0" prefHeight="37.0" prefWidth="230.0" text="Deadline Week Number" />
+                  <Label layoutX="14.0" layoutY="87.0" prefHeight="37.0" prefWidth="118.0" text="Descriere" />
+                  <Label layoutX="21.0" layoutY="259.0" prefHeight="46.0" prefWidth="74.0" text="ID" />
+                  <TextField fx:id="txtId" layoutX="132.0" layoutY="267.0" prefHeight="30.0" prefWidth="207.0" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="68.0" />
+                  <TextArea fx:id="txtDescriere" layoutX="128.0" layoutY="98.0" prefHeight="154.0" prefWidth="230.0">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></TextArea>
+                  <Label layoutX="17.0" layoutY="2.0" prefHeight="37.0" prefWidth="230.0" text="Start Week Number" />
+                  <Label fx:id="txtStartWeek" layoutX="260.0" layoutY="10.0" prefHeight="23.0" prefWidth="68.0" text="Label" />
+                  <ProgressIndicator fx:id="idProgress" layoutX="161.0" layoutY="316.0" prefHeight="40.0" prefWidth="61.0" progress="0.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <HBox fx:id="idDown" layoutX="-1.0" layoutY="449.0" prefHeight="201.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="449.0">
+         <children>
+            <Button fx:id="btnAdauga" mnemonicParsing="false" onAction="#handleAdauga" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Adauga">
+               <HBox.margin>
+                  <Insets left="50.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnSterge" mnemonicParsing="false" onAction="#handleSterge" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Sterge">
+               <HBox.margin>
+                  <Insets left="150.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Update" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="150.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@../BackgroundStudenti.css" />
+      <URL value="@../LeButton.css" />
+   </stylesheets>
+</AnchorPane>

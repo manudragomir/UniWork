@@ -1,0 +1,21 @@
+[2019-05-25 16:22:56] [info] Start Program:
+Path:"C:\Users\Manuel\source\repos\SimulareLaborator\Win32\Debug\SimulareLaborator.exe"
+Arguments:
+Working directory: "C:\Users\Manuel\source\repos\SimulareLaborator\SimulareLaborator\"
+Modules: Selected: C:\Users\Manuel\source\repos\SimulareLaborator\Win32\Debug\SimulareLaborator.exe Excluded: 
+Sources: Selected: C:\Users\Manuel\source\repos\SimulareLaborator\SimulareLaborator Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\Manuel\AppData\Local\Temp\itstlpfo.pjk 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2019-05-25 16:22:56] [info] Module: C:\Users\Manuel\source\repos\SimulareLaborator\Win32\Debug\SimulareLaborator.exe is selected because it matches selected pattern: C:\Users\Manuel\source\repos\SimulareLaborator\Win32\Debug\SimulareLaborator.exe
+[2019-05-25 16:23:05] [info] ----------------------------------------------------
+[2019-05-25 16:23:05] [info] Coverage binary generated in file: C:\Users\Manuel\AppData\Local\Temp\itstlpfo.pjk
+[2019-05-25 16:23:05] [info] ----------------------------------------------------

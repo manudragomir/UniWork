@@ -1,0 +1,25 @@
+[2019-06-17 17:48:05] [info] Start Program:
+Path:"C:\Users\Manuel\source\repos\QtGuiApplication2\Win32\Debug\QtGuiApplication2.exe"
+Arguments:
+Working directory: "C:\Users\Manuel\source\repos\QtGuiApplication2\QtGuiApplication2\"
+Modules: Selected: C:\Users\Manuel\source\repos\QtGuiApplication2\Win32\Debug\QtGuiApplication2.exe Excluded: 
+Sources: Selected: C:\Users\Manuel\source\repos\QtGuiApplication2\QtGuiApplication2 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\Manuel\AppData\Local\Temp\lmgysvtd.zwg 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2019-06-17 17:48:05] [info] Module: C:\Users\Manuel\source\repos\QtGuiApplication2\Win32\Debug\QtGuiApplication2.exe is selected because it matches selected pattern: C:\Users\Manuel\source\repos\QtGuiApplication2\Win32\Debug\QtGuiApplication2.exe
+[2019-06-17 17:48:09] [warning] ----------------------------------------------------
+[2019-06-17 17:48:09] [warning] It seems there is an assertion failure or you call DebugBreak() in your program.
+[2019-06-17 17:48:09] [warning] ----------------------------------------------------
+[2019-06-17 17:48:16] [info] ----------------------------------------------------
+[2019-06-17 17:48:16] [info] Coverage binary generated in file: C:\Users\Manuel\AppData\Local\Temp\lmgysvtd.zwg
+[2019-06-17 17:48:16] [info] ----------------------------------------------------
+[2019-06-17 17:48:16] [error] Your program stop with error code: -2147483645

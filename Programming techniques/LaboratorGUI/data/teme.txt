@@ -1,0 +1,6 @@
+1;3;7;ArhitecturaStratificata
+2;4;6;Fisiere
+3;4;10;Serializare
+4;3;12;OOP
+5;1;4;DTO
+10;7;8;A

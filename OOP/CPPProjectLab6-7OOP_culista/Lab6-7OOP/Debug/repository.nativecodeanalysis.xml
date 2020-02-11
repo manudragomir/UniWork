@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>repository.cpp</FILENAME>
+      <LINE>18</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26496</DEFECTCODE>
+    <DESCRIPTION>The variable 'pozitie' is assigned only once, mark it as const (con.4).</DESCRIPTION>
+    <FUNCTION>Repository::deleteRepo</FUNCTION>
+    <DECORATED>?deleteRepo@Repository@@QAEXABVDisciplina@@@Z</DECORATED>
+    <FUNCLINE>16</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>repository.cpp</FILENAME>
+      <LINE>43</LINE>
+      <COLUMN>23</COLUMN>
+    </SFA>
+    <DEFECTCODE>26446</DEFECTCODE>
+    <DESCRIPTION>Prefer to use gsl::at() instead of unchecked subscript operator (bounds.4).</DESCRIPTION>
+    <FUNCTION>Repository::updateRepo</FUNCTION>
+    <DECORATED>?updateRepo@Repository@@QAEXABVDisciplina@@@Z</DECORATED>
+    <FUNCLINE>38</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>repository.cpp</FILENAME>
+      <LINE>47</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26440</DEFECTCODE>
+    <DESCRIPTION>Function 'Repository::getAllRepo' can be declared 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>Repository::getAllRepo</FUNCTION>
+    <DECORATED>?getAllRepo@Repository@@QAEABV?$vector@VDisciplina@@V?$allocator@VDisciplina@@@std@@@std@@XZ</DECORATED>
+    <FUNCLINE>47</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>repository.cpp</FILENAME>
+      <LINE>53</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class Repository', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>Repository::{dtor}</FUNCTION>
+    <DECORATED>??1Repository@@QAE@XZ</DECORATED>
+    <FUNCLINE>53</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Disciplina::ore' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::{ctor}</FUNCTION>
+    <DECORATED>??0Disciplina@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

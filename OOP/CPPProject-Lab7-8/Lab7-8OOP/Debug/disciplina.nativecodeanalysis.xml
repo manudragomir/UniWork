@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>44</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class Disciplina', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>Disciplina::=</FUNCTION>
+    <DECORATED>??4Disciplina@@QAEAAV0@ABV0@@Z</DECORATED>
+    <FUNCLINE>44</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

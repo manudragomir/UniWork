@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+    <student id="1">
+        <nume>Marcel1</nume>
+        <prenume>Marcu</prenume>
+        <grupa>213</grupa>
+        <email>a</email>
+        <cd>prof1</cd>
+    </student>
+    <student id="2">
+        <nume>Marcel2</nume>
+        <prenume>Marcu</prenume>
+        <grupa>213</grupa>
+        <email>a</email>
+        <cd>prof1</cd>
+    </student>
+    <student id="3">
+        <nume>Marcel3</nume>
+        <prenume>Marcu</prenume>
+        <grupa>217</grupa>
+        <email>a</email>
+        <cd>prof1</cd>
+    </student>
+    <student id="4">
+        <nume>Marcel4</nume>
+        <prenume>Marcu</prenume>
+        <grupa>216</grupa>
+        <email>a</email>
+        <cd>prof2</cd>
+    </student>
+    <student id="5">
+        <nume>Marcel5</nume>
+        <prenume>Marcu</prenume>
+        <grupa>215</grupa>
+        <email>a</email>
+        <cd>prof2</cd>
+    </student>
+    <student id="6">
+        <nume>Marcel6</nume>
+        <prenume>Marcu</prenume>
+        <grupa>214</grupa>
+        <email>a</email>
+        <cd>prof3</cd>
+    </student>
+</students>

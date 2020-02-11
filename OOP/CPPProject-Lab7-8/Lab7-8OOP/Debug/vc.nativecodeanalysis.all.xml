@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>44</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class Disciplina', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>Disciplina::=</FUNCTION>
+    <DECORATED>??4Disciplina@@QAEAAV0@ABV0@@Z</DECORATED>
+    <FUNCLINE>44</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>graspcontroller.h</FILENAME>
+      <LINE>23</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class GRASPController', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>GRASPController::{dtor}</FUNCTION>
+    <DECORATED>??1GRASPController@@QAE@XZ</DECORATED>
+    <FUNCLINE>23</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>disciplina.h</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Disciplina::ore' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::{ctor}</FUNCTION>
+    <DECORATED>??0Disciplina@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>27</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>repository.cpp</FILENAME>
+      <LINE>71</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class Repository', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>Repository::{dtor}</FUNCTION>
+    <DECORATED>??1Repository@@QAE@XZ</DECORATED>
+    <FUNCLINE>71</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>ui.cpp</FILENAME>
+      <LINE>169</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class UI', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>UI::{dtor}</FUNCTION>
+    <DECORATED>??1UI@@QAE@XZ</DECORATED>
+    <FUNCLINE>169</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>

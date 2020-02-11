@@ -1,0 +1,99 @@
+﻿  GRASPController.cpp
+  Teste.cpp
+  UI.cpp
+  ConsolaGUI.cpp
+  main.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xmemory0(881): error C2280: 'std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>::unique_ptr(const std::unique_ptr<_Ty,std::default_delete<_Ty>> &)': attempting to reference a deleted function
+          with
+          [
+              _Ty=ActiuneUndo
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\memory(2337): note: see declaration of 'std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>::unique_ptr'
+          with
+          [
+              _Ty=ActiuneUndo
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\memory(2337): note: 'std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>::unique_ptr(const std::unique_ptr<_Ty,std::default_delete<_Ty>> &)': function was explicitly deleted
+          with
+          [
+              _Ty=ActiuneUndo
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xmemory(164): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,_Ty&>(_Alloc &,_Objty *const ,_Ty &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>>,
+              _Ty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>,
+              _Objty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xmemory(164): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,_Ty&>(_Alloc &,_Objty *const ,_Ty &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>>,
+              _Ty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>,
+              _Objty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xmemory(190): note: see reference to function template instantiation 'void std::_Uninitialized_backout_al<_FwdIt,_Alloc>::_Emplace_back<_Ty&>(_Ty &)' being compiled
+          with
+          [
+              _FwdIt=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *,
+              _Alloc=std::allocator<std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>>,
+              _Ty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xmemory(190): note: see reference to function template instantiation 'void std::_Uninitialized_backout_al<_FwdIt,_Alloc>::_Emplace_back<_Ty&>(_Ty &)' being compiled
+          with
+          [
+              _FwdIt=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *,
+              _Alloc=std::allocator<std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>>,
+              _Ty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xmemory(217): note: see reference to function template instantiation '_FwdIt std::_Uninitialized_copy_al_unchecked<_Ty*,_Ty*,_Alloc>(_InIt,const _InIt,const _FwdIt,_Alloc &,std::_General_ptr_iterator_tag,std::_Any_tag)' being compiled
+          with
+          [
+              _FwdIt=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *,
+              _Ty=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>,
+              _Alloc=std::allocator<std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>>,
+              _InIt=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\vector(1823): note: see reference to function template instantiation '_FwdIt *std::_Uninitialized_copy<_Iter,std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>*,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>>(const _InIt,const _InIt,_FwdIt,_Alloc &)' being compiled
+          with
+          [
+              _FwdIt=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *,
+              _Iter=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *,
+              _Ty=ActiuneUndo,
+              _InIt=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *,
+              _Alloc=std::allocator<std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>>>
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\vector(738): note: see reference to function template instantiation 'std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>> *std::vector<std::unique_ptr<_Ty,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>>::_Ucopy<std::unique_ptr<_Ty,std::default_delete<_Ty>>*>(_Iter,_Iter,std::unique_ptr<_Ty,std::default_delete<_Ty>> *)' being compiled
+          with
+          [
+              _Ty=ActiuneUndo,
+              _Iter=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\vector(738): note: see reference to function template instantiation 'std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>> *std::vector<std::unique_ptr<_Ty,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>>::_Ucopy<std::unique_ptr<_Ty,std::default_delete<_Ty>>*>(_Iter,_Iter,std::unique_ptr<_Ty,std::default_delete<_Ty>> *)' being compiled
+          with
+          [
+              _Ty=ActiuneUndo,
+              _Iter=std::unique_ptr<ActiuneUndo,std::default_delete<ActiuneUndo>> *
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\vector(732): note: while compiling class template member function 'std::vector<std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>>::vector(const std::vector<std::unique_ptr<_Ty,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>> &)'
+          with
+          [
+              _Ty=ActiuneUndo
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\users\manuel\source\repos\qtguiapplication5\qtguiapplication5\consolagui.h(12): note: see reference to function template instantiation 'std::vector<std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>>::vector(const std::vector<std::unique_ptr<_Ty,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>> &)' being compiled
+          with
+          [
+              _Ty=ActiuneUndo
+          ] (compiling source file ConsolaGUI.cpp)
+  c:\users\manuel\source\repos\qtguiapplication5\qtguiapplication5\graspcontroller.h(17): note: see reference to class template instantiation 'std::vector<std::unique_ptr<ActiuneUndo,std::default_delete<_Ty>>,std::allocator<std::unique_ptr<_Ty,std::default_delete<_Ty>>>>' being compiled
+          with
+          [
+              _Ty=ActiuneUndo
+          ] (compiling source file ConsolaGUI.cpp)
+c:\qt\5.12.2\msvc2017\include\qtcore\qlist.h(98): warning C4003: not enough arguments for function-like macro invocation 'realloc' (compiling source file main.cpp)
+c:\qt\5.12.2\msvc2017\include\qtcore\qlist.h(98): error C2059: syntax error: ',' (compiling source file main.cpp)
+c:\qt\5.12.2\msvc2017\include\qtcore\qlist.h(577): warning C4003: not enough arguments for function-like macro invocation 'realloc' (compiling source file main.cpp)
+c:\qt\5.12.2\msvc2017\include\qtcore\qvarlengtharray.h(244): error C2059: syntax error: 'constant' (compiling source file main.cpp)
+  c:\qt\5.12.2\msvc2017\include\qtcore\qvarlengtharray.h(260): note: see reference to class template instantiation 'QVarLengthArray<T,Prealloc>' being compiled (compiling source file main.cpp)
+c:\qt\5.12.2\msvc2017\include\qtcore\qvarlengtharray.h(362): error C2988: unrecognizable template declaration/definition (compiling source file main.cpp)
+c:\qt\5.12.2\msvc2017\include\qtcore\qvarlengtharray.h(362): error C2059: syntax error: 'constant' (compiling source file main.cpp)

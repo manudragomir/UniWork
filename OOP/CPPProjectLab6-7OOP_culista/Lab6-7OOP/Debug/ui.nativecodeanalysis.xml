@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>ui.cpp</FILENAME>
+      <LINE>36</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>26496</DEFECTCODE>
+    <DESCRIPTION>The variable 'is_in' is assigned only once, mark it as const (con.4).</DESCRIPTION>
+    <FUNCTION>UI::UI_search</FUNCTION>
+    <DECORATED>?UI_search@UI@@QAEXXZ</DECORATED>
+    <FUNCLINE>32</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Disciplina::ore' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::{ctor}</FUNCTION>
+    <DECORATED>??0Disciplina@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>ui.cpp</FILENAME>
+      <LINE>146</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class UI', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>UI::{dtor}</FUNCTION>
+    <DECORATED>??1UI@@QAE@XZ</DECORATED>
+    <FUNCLINE>146</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

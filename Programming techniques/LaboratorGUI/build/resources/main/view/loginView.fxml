@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="496.0" style="-fx-background-image: url(&quot;file:part2.jpg&quot;);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="304.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="496.0" prefHeight="400.0" prefWidth="304.0" style="-fx-background-color: #06054B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="496.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="32.0" layoutY="58.0" prefHeight="262.0" prefWidth="240.0" style="-fx-background-color: #3203B1;" stylesheets="@../BackgroundOne.css">
+               <children>
+                  <Label layoutX="73.0" layoutY="14.0" prefHeight="55.0" prefWidth="103.0" text="Sign in" textFill="#ff00e1">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="password" layoutX="46.0" layoutY="119.0" prefHeight="40.0" prefWidth="157.0" promptText="password" style="-fx-background-color: #3203B1;" />
+                  <TextField fx:id="username" layoutX="46.0" layoutY="69.0" prefHeight="40.0" prefWidth="157.0" promptText="username" style="-fx-background-color: #3203B1;">
+                     <opaqueInsets>
+                        <Insets bottom="100.0" />
+                     </opaqueInsets>
+                  </TextField>
+                  <Button layoutX="69.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="48.0" prefWidth="103.0" style="-fx-background-color: #97ebf4;" text="Signin" textFill="#ff3d64">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

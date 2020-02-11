@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<teme>
+    <tema id="1">
+        <startWeek>3</startWeek>
+        <deadlineWeek>7</deadlineWeek>
+        <descriere>Arhitectura</descriere>
+    </tema>
+    <tema id="2">
+        <startWeek>4</startWeek>
+        <deadlineWeek>6</deadlineWeek>
+        <descriere>Fisiere</descriere>
+    </tema>
+    <tema id="3">
+        <startWeek>4</startWeek>
+        <deadlineWeek>10</deadlineWeek>
+        <descriere>Serializare</descriere>
+    </tema>
+    <tema id="4">
+        <startWeek>3</startWeek>
+        <deadlineWeek>12</deadlineWeek>
+        <descriere>OOP</descriere>
+    </tema>
+    <tema id="5">
+        <startWeek>1</startWeek>
+        <deadlineWeek>4</deadlineWeek>
+        <descriere>DTO</descriere>
+    </tema>
+    <tema id="10">
+        <startWeek>7</startWeek>
+        <deadlineWeek>8</deadlineWeek>
+        <descriere>A</descriere>
+    </tema>
+</teme>

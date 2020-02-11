@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>12</LINE>
+      <COLUMN>26</COLUMN>
+    </SFA>
+    <DEFECTCODE>26440</DEFECTCODE>
+    <DESCRIPTION>Function 'Disciplina::get_denumire' can be declared 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::get_denumire</FUNCTION>
+    <DECORATED>?get_denumire@Disciplina@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
+    <FUNCLINE>12</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>17</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>26440</DEFECTCODE>
+    <DESCRIPTION>Function 'Disciplina::get_ore' can be declared 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::get_ore</FUNCTION>
+    <DECORATED>?get_ore@Disciplina@@QBEHXZ</DECORATED>
+    <FUNCLINE>17</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>22</LINE>
+      <COLUMN>26</COLUMN>
+    </SFA>
+    <DEFECTCODE>26440</DEFECTCODE>
+    <DESCRIPTION>Function 'Disciplina::get_tip' can be declared 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::get_tip</FUNCTION>
+    <DECORATED>?get_tip@Disciplina@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
+    <FUNCLINE>22</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>26</COLUMN>
+    </SFA>
+    <DEFECTCODE>26440</DEFECTCODE>
+    <DESCRIPTION>Function 'Disciplina::get_cadru_didactic' can be declared 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::get_cadru_didactic</FUNCTION>
+    <DECORATED>?get_cadru_didactic@Disciplina@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
+    <FUNCLINE>27</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.cpp</FILENAME>
+      <LINE>43</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class Disciplina', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>Disciplina::{dtor}</FUNCTION>
+    <DECORATED>??1Disciplina@@QAE@XZ</DECORATED>
+    <FUNCLINE>43</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: fed13a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentController">
+   <children>
+      <SplitPane dividerPositions="0.5601336302895323" layoutY="73.0" prefHeight="372.0" prefWidth="900.0" style="-fx-background-color: fed13a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <items>
+          <AnchorPane maxHeight="500.0" maxWidth="500.0" minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="422.0">
+               <children>
+                  <TableView id="tblStudenti" fx:id="tblStudenti" prefHeight="361.0" prefWidth="506.0" style="-fx-background-color: fed13a;">
+                    <columns>
+                        <TableColumn fx:id="tblId" prefWidth="32.0" text="ID" />
+                        <TableColumn fx:id="tblNume" prefWidth="90.0" text="Nume" />
+                        <TableColumn fx:id="tblPrenume" text="Prenume" />
+                        <TableColumn fx:id="tblGrupa" prefWidth="67.0" text="Grupa" />
+                        <TableColumn fx:id="tblEmail" prefWidth="133.0" text="Email" />
+                        <TableColumn fx:id="tblProf" prefWidth="97.0" text="Prof" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="421.0">
+               <children>
+                  <TextField fx:id="txtEmail" layoutX="74.0" layoutY="103.0" prefHeight="30.0" prefWidth="79.0" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+                  <TextField fx:id="txtNume" layoutX="100.0" layoutY="9.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+                  <TextField fx:id="txtGrupa" layoutX="74.0" layoutY="71.0" prefHeight="30.0" prefWidth="79.0" AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+                  <TextField fx:id="txtPrenume" layoutX="74.0" layoutY="39.0" prefHeight="25.0" prefWidth="79.0" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+                  <Label layoutX="21.0" prefHeight="37.0" prefWidth="74.0" text="Nume" />
+                  <Label layoutX="21.0" layoutY="48.0" prefHeight="37.0" prefWidth="74.0" text="Prenume" />
+                  <Label layoutX="21.0" layoutY="96.0" prefHeight="37.0" prefWidth="66.0" text="Grupa" />
+                  <Label layoutX="19.0" layoutY="148.0" prefHeight="37.0" prefWidth="74.0" text="Email" />
+                  <Label layoutX="19.0" layoutY="196.0" prefHeight="37.0" prefWidth="74.0" text="Prof" />
+                  <TextField fx:id="txtProf" layoutX="100.0" layoutY="188.0" prefHeight="30.0" prefWidth="79.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+                  <TextField fx:id="searchBox" layoutX="100.0" layoutY="303.0" prefHeight="30.0" prefWidth="160.0" />
+                  <Label layoutX="19.0" layoutY="309.0" text="Search" />
+                  <Label layoutX="19.0" layoutY="244.0" prefHeight="46.0" prefWidth="74.0" text="ID" />
+                  <TextField fx:id="txtId" layoutX="100.0" layoutY="243.0" prefHeight="30.0" prefWidth="207.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <HBox fx:id="hboxImg" layoutX="-1.0" layoutY="449.0" prefHeight="201.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="449.0">
+         <children>
+            <Button fx:id="btnAdauga" mnemonicParsing="false" onAction="#handleAdauga" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Adauga">
+               <HBox.margin>
+                  <Insets left="50.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnSterge" mnemonicParsing="false" onAction="#handleSterge" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Sterge">
+               <HBox.margin>
+                  <Insets left="150.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="90.0" prefWidth="160.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Update" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="150.0" top="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <Label layoutX="532.0" layoutY="14.0" prefHeight="17.0" prefWidth="80.0" />
+      <Button layoutX="636.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="206.0" text="LoadFromCSV" visible="false">
+         <stylesheets>
+            <URL value="@../LeButton.css" />
+            <URL value="@../BackgroundStudenti.css" />
+         </stylesheets></Button>
+   </children>
+   <stylesheets>
+      <URL value="@../BackgroundStudenti.css" />
+      <URL value="@../LeButton.css" />
+   </stylesheets>
+</AnchorPane>

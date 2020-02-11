@@ -1,0 +1,10 @@
+1 Epsilon open 3 Progr1 Progr2 Progr3 
+2 Teta closed 4 Progr1 Progr2 Progr3 Progr4 
+3 Alpha closed 4 Progr1 Progr2 Progr3 Progr5 
+4 Beta inprogress 4 Progr1 Progr2 Progr3 Progr2 
+5 Gamma closed 1 Progr1 
+6 Eta closed 2 Progr1 Progr2 
+7 Miu inprogress 3 Progr1 Progr2 Progr5 
+0 Niu open 3 Progr1 Progr2 Progr6 
+9 Epsilon open 3 Progr1 Progr2 Progr7 
+10 Epsilon inprogress 3 Progr1 Progr2 Progr8 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>graspcontroller.cpp</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26496</DEFECTCODE>
+    <DESCRIPTION>The variable 'pozitie' is assigned only once, mark it as const (con.4).</DESCRIPTION>
+    <FUNCTION>GRASPController::search</FUNCTION>
+    <DECORATED>?search@GRASPController@@QAE_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>22</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>disciplina.h</FILENAME>
+      <LINE>25</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Disciplina::ore' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::{ctor}</FUNCTION>
+    <DECORATED>??0Disciplina@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>25</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab6-7oop\lab6-7oop\</FILEPATH>
+      <FILENAME>graspcontroller.cpp</FILENAME>
+      <LINE>107</LINE>
+      <COLUMN>18</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class GRASPController', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>GRASPController::{dtor}</FUNCTION>
+    <DECORATED>??1GRASPController@@QAE@XZ</DECORATED>
+    <FUNCLINE>107</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

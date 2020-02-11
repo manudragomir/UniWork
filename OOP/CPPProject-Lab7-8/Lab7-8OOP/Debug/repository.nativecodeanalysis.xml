@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>repository.cpp</FILENAME>
+      <LINE>71</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>26432</DEFECTCODE>
+    <DESCRIPTION>If you define or delete any default operation in the type 'class Repository', define or delete them all (c.21).</DESCRIPTION>
+    <FUNCTION>Repository::{dtor}</FUNCTION>
+    <DECORATED>??1Repository@@QAE@XZ</DECORATED>
+    <FUNCLINE>71</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\manuel\source\repos\lab7-8oop\lab7-8oop\</FILEPATH>
+      <FILENAME>disciplina.h</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Disciplina::ore' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Disciplina::{ctor}</FUNCTION>
+    <DECORATED>??0Disciplina@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>27</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
